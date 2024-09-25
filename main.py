@@ -19,505 +19,713 @@ st.set_page_config(
 ## NEC Syllabus for computer Engineering
 course_structure = {
     "Concept of Basic Electrical and Electronics Engineering (AExE01)": {
-        "Basic Concept": {
+        "Basic concept": {
             "topics": [
-                "Ohm's law + electric voltage + current + power and energy",
-                "Conducting and insulating materials",
-                "Series and parallel electric circuits + star-delta and delta-star conversion",
-                "Kirchhoff’s law + linear and non-linear circuit + bilateral and unilateral circuits",
-                "Active and passive circuits",
+                "Ohm's law",
+                "electric voltage current, power and energy, conducting and insulating materials",
+                "Series and parallel electric circuits, start-delta and delta-star conversion",
+                "Kirchhoff’s law",
+                "linear and non-linear circuit, bilateral and unilateral circuits",
+                "active and passive circuits",
             ]
         },
-        "Network Theorems": {
+        "Network theorems": {
             "topics": [
-                "Superposition theorem + Thevenin's theorem + Norton's theorem",
-                "Maximum power transfer theorem",
-                "R-L, R-C, R-L-C circuits + resonance in AC series and parallel circuit",
-                "Active and reactive power",
+                "concept of superposition theorem, Thevenin's theorem, Norton’s theorem, maximum power transfer theorem",
+                "R-L, R-C, R-L-C circuits, resonance in AC series and parallel circuit",
+                "active and reactive power",
             ]
         },
-        "Alternating Current Fundamentals": {
+        "Alternating current fundamentals": {
             "topics": [
-                "Principle of generation of alternating voltages and currents + equations and waveforms",
-                "Average, peak and RMS values",
+                "Principle of generation of alternating voltages and currents and their equations and waveforms",
+                "average, peak and rms values",
                 "Three phase system",
             ]
         },
-        "Semiconductor Devices": {
+        "Semiconductor devices": {
             "topics": [
-                "Semiconductor diode + characteristics",
-                "BJT configuration and biasing + small and large signal model",
-                "Working principle and application of MOSFET and CMOS",
+                "Semiconductor diode and its characteristics",
+                "BJT Configuration and biasing",
+                "small and large signal model",
+                "working principle and application of MOSFET and CMOS",
             ]
         },
-        "Signal Generator": {
+        "Signal generator": {
             "topics": [
-                "Basic principles of oscillator",
-                "RC, LC and crystal oscillators circuits",
+                "Basic Principles of Oscillator",
+                "RC, LC and Crystal Oscillators Circuits",
                 "Waveform generators",
             ]
         },
         "Amplifiers": {
             "topics": [
-                "Classification of output stages: Class A, Class B, Class AB",
-                "Biasing the Class AB stage",
-                "Power BJTs + Transformer-coupled push-pull stages",
-                "Tuned amplifiers + op-amps",
+                "Classification of Output Stages",
+                "Class A Output Stage",
+                "Class B Output Stage",
+                "Class AB Output Stage, Biasing the Class AB Stage",
+                "Power BJTs, Transformer-Coupled Push-Pull Stages",
+                "Tuned Amplifiers",
+                "op-amps",
             ]
         },
     },
     "Digital Logic and Microprocessor (AExE02)": {
-        "Digital Logic": {
+        "Digital logic": {
             "topics": [
-                "Number systems + logic levels + logic gates",
+                "Number Systems, Logic Levels, Logic Gates",
                 "Boolean algebra",
-                "Sum-of-Products method + Product-of-Sums method",
+                "Sum-of-Products Method, Product-of-Sums Method",
                 "Truth Table to Karnaugh Map",
             ]
         },
-        "Combinational and Arithmetic Circuits": {
+        "Combinational and arithmetic circuits": {
             "topics": [
-                "Multiplexers + Demultiplexers + Decoder + Encoder",
-                "Binary addition + Binary subtraction",
-                "Operations on unsigned and signed binary numbers",
+                "Multiplexers, Demultiplexers",
+                "Decoder, Encoder",
+                "Binary Addition, Binary Subtraction",
+                "operation on Unsigned and Signed Binary Numbers",
             ]
         },
-        "Sequential Logic Circuit": {
+        "Sequential logic circuit": {
             "topics": [
-                "RS Flip-Flops + Gated Flip-Flops + Edge Triggered Flip-Flops + Master-Slave Flip-Flops",
-                "Types of registers",
-                "Applications of shift registers",
-                "Asynchronous counters + Synchronous counters",
+                "RS Flip-Flops, Gated Flip-Flops, Edge Triggered Flip-Flops, Master-Slave Flip-Flops",
+                "Types of Registers",
+                "Applications of Shift Registers",
+                "Asynchronous Counters, Synchronous Counters",
             ]
         },
         "Microprocessor": {
             "topics": [
-                "Internal architecture and features of microprocessor",
-                "Assembly language programming",
+                "Internal Architecture and Features of microprocessor",
+                "Assembly Language Programming",
             ]
         },
-        "Microprocessor System": {
+        "Microprocessor system": {
             "topics": [
-                "Memory device classification and hierarchy",
-                "Interfacing I/O and memory + parallel interface",
-                "Introduction to programmable peripheral interface (PPI)",
-                "Serial interface + synchronous and asynchronous transmission + serial interface standards",
-                "Introduction to Direct Memory Access (DMA) and DMA controllers",
+                "Memory Device Classification and Hierarchy",
+                "Interfacing I/O and Memory Parallel Interface",
+                "Introduction to Programmable Peripheral Interface (PPI)",
+                "Serial Interface, Synchronous and Asynchronous Transmission",
+                "Serial Interface Standards",
+                "Introduction to Direct Memory Access (DMA) and DMA Controllers",
             ]
         },
-        "Interrupt Operations": {
-            "topics": ["Interrupt + Interrupt Service Routine", "Interrupt processing"]
+        "Interrupt operations": {
+            "topics": ["Interrupt, Interrupt Service Routine, and Interrupt Processing"]
         },
     },
     "Programming Language and Its Applications (ACtE03)": {
-        "Introduction to C Programming": {
+        "Introduction to C programming": {
             "topics": [
-                "C tokens + operators + formatted/unformatted input/output",
-                "Control statements + looping",
-                "User-defined functions + recursive functions",
-                "Array (1-D, 2-D, multi-dimensional) + string manipulations",
+                "C Tokens, Operators",
+                "Formatted/Unformatted Input/output",
+                "Control Statements, Looping",
+                "User-defined functions, Recursive functions",
+                "Array (1-D, 2-D, Multi-dimensional), and String manipulations",
             ]
         },
-        "Pointers, Structure and Data Files in C Programming": {
+        "Pointers, structure and data files in C programming": {
             "topics": [
-                "Pointer arithmetic + pointer and array + passing pointer to function",
-                "Structure vs union + array of structure + passing structure to function + structure and pointer",
+                "Pointer Arithmetic",
+                "Pointer and array, passing pointer to function",
+                "Structure vs Union, array of structure, passing structure to function",
+                "structure and pointer",
                 "Input/output operations on files",
-                "Sequential and random access to file",
+                "Sequential and Random Access to File",
             ]
         },
-        "C++ Language Constructs with Objects and Classes": {
+        "C++ language constructs with objects and classes": {
             "topics": [
-                "Namespace + function overloading + inline functions + default argument",
-                "Pass/return by reference + class and object introduction + access specifiers",
-                "Objects and member access + defining member function + constructor and its types + destructor",
-                "Dynamic memory allocation for objects + object array + this pointer + static data member + static function",
-                "Constant member functions + constant objects + friend function + friend classes",
+                "Namespace, Function Overloading, Inline functions, Default Argument",
+                "Pass/Return by reference",
+                "introduction to Class and object, Access Specifiers",
+                "Objects and the Member Access, Defining Member Function",
+                "Constructor and its type, Destructor",
+                "Dynamic memory allocation for objects and object array",
+                "this Pointer, static Data Member and static Function",
+                "Constant Member Functions and Constant Objects, Friend Function and Friend Classes",
             ]
         },
-        "Features of Object-Oriented Programming": {
+        "Features of object-oriented programming": {
             "topics": [
-                "Operator overloading (unary, binary) + data conversion",
+                "Operator overloading (unary, binary), data conversion",
                 "Inheritance (single, multiple, multilevel, hybrid, multipath)",
-                "Constructor/destructor in single/multilevel inheritance",
+                "constructor/destructor in single/multilevel inheritances",
             ]
         },
-        "Pure Virtual Function and File Handling": {
+        "Pure virtual function and file handling": {
             "topics": [
-                "Virtual function + dynamic binding",
-                "Defining, opening, and closing a file + input/output operations on files",
+                "Virtual function, dynamic binding",
+                "defining opening and closing a file",
+                "Input / Output operations on files",
                 "Error handling during input/output operations",
-                "Stream class hierarchy for console input/output",
-                "Unformatted/Formatted input/output with ios member functions + flags + formatting with manipulators",
+                "Stream Class Hierarchy for Console Input /Output",
+                "Unformatted Input /Output, Formatted Input /Output with ios Member functions and Flags",
+                "Formatting with Manipulators",
             ]
         },
-        "Generic Programming and Exception Handling": {
+        "Generic programming and exception handling": {
             "topics": [
-                "Function template + overloading function template + class template",
-                "Standard Template Library (containers, algorithms, iterators)",
-                "Exception handling constructs (try, catch, throw) + multiple exception handling",
-                "Rethrowing exception + catching all exceptions + exception with arguments",
-                "Exception specification for function + handling uncaught and unexpected exceptions",
+                "Function Template, Overloading Function Template",
+                "Class Template, Function Definition of Class Template",
+                "Standard Template Library (Containers, Algorithms, Iterators)",
+                "Exception Handling Constructs (try, catch, throw)",
+                "Multiple Exception Handling, Rethrowing Exception",
+                "Catching All Exceptions, Exception with Arguments",
+                "Exceptions Specification for Function, Handling Uncaught and Unexpected Exceptions",
             ]
         },
     },
     "Computer Organization and Embedded System (ACtE04)": {
-        "Control and Central Processing Units": {
+        "Control and central processing units": {
             "topics": [
-                "Control memory + addressing sequencing + computer configuration",
-                "Microinstruction format + design of control unit",
-                "CPU structure and function + arithmetic and logic unit",
-                "Instruction formats + addressing modes + data transfer and manipulation",
-                "RISC and CISC pipelining + parallel processing",
+                "Control Memory, addressing sequencing",
+                "Computer configuration",
+                "Microinstruction Format",
+                "Design of control unit",
+                "CPU Structure and Function",
+                "Arithmetic and logic Unit",
+                "Instruction formats, addressing modes",
+                "Data transfer and manipulation",
+                "RISC and CISC",
+                "Pipelining, parallel processing",
             ]
         },
-        "Computer Arithmetic and Memory System": {
+        "Computer arithmetic and memory system": {
             "topics": [
-                "Arithmetic and logical operations",
-                "Memory hierarchy + internal and external memory",
-                "Cache memory principles + elements of cache design",
-                "Cache size + mapping function + replacement algorithm + write policy",
-                "Memory write ability + storage permanence + composing memory",
+                "Arithmetic and Logical operation",
+                "The Memory Hierarchy",
+                "Internal and External memory",
+                "Cache memory principles",
+                "Elements of Cache design - Cache size, Mapping function, Replacement algorithm, write policy, Number of caches",
+                "Memory Write Ability and Storage Permanence",
+                "Composing Memory",
             ]
         },
-        "Input-Output Organization and Multiprocessor": {
+        "Input-Output organization and multiprocessor": {
             "topics": [
-                "Peripheral devices + I/O modules + input-output interface",
-                "Modes of transfer + direct memory access",
-                "Characteristics of multiprocessors + interconnection structure",
-                "Inter-processor communication and synchronization",
+                "Peripheral devices",
+                "I/O modules, Input-output interface",
+                "Modes of transfer, Direct Memory access",
+                "Characteristics of multiprocessors",
+                "Interconnection Structure",
+                "Inter-processor Communication and synchronization",
             ]
         },
-        "Hardware-Software Design Issues on Embedded System": {
+        "Hardware-Software design issues on embedded system": {
             "topics": [
-                "Embedded systems overview + classification of embedded systems",
-                "Custom single-purpose processor design + optimizing custom single-purpose processors",
-                "Basic architecture + operation + programmer's view",
-                "Development environment",
-                "Application-specific instruction-set processors",
+                "Embedded Systems overview",
+                "Classification of Embedded Systems",
+                "Custom Single-Purpose Processor Design",
+                "Optimizing Custom Single-Purpose Processors",
+                "Basic Architecture, Operation and Programmer’s View",
+                "Development Environment",
+                "Application-Specific Instruction-Set Processors",
             ]
         },
-        "Real-Time Operating and Control System": {
+        "Real-Time operating and control system": {
             "topics": [
-                "Operating system basics + task + process + threads",
-                "Multiprocessing + multitasking",
-                "Task scheduling + task synchronization",
-                "Device drivers",
-                "Open-loop and close-loop control system overview + control",
+                "Operating System Basics",
+                "Task, Process, and Threads",
+                "Multiprocessing and Multitasking",
+                "Task Scheduling, Task Synchronization",
+                "Device Drivers",
+                "Open-loop and Close-Loop control System overview",
+                "Control",
             ]
         },
-        "Hardware Descriptions Language and IC Technology": {
+        "Hardware description language and IC technology": {
             "topics": [
-                "VHDL overview + overflow and data representation using VHDL",
+                "VHDL Overview",
+                "Overflow and data representation using VHDL",
                 "Design of combinational and sequential logic using VHDL",
                 "Pipelining using VHDL",
             ]
         },
     },
     "Concept of Computer Network and Network Security System (ACtE05)": {
-        "Introduction to Computer Networks and Physical Layer": {
+        "Introduction to computer networks and physical layer": {
             "topics": [
-                "Networking model + protocols and standards",
-                "OSI model + TCP/IP model",
-                "Networking devices (hubs, bridges, switches, routers)",
+                "Networking model",
+                "Protocols and Standards",
+                "OSI model and TCP/IP model",
+                "Networking Devices (Hubs, Bridges, Switches, and Routers)",
                 "Transmission media",
             ]
         },
-        "Data Link Layer": {
+        "Data link layer": {
             "topics": [
-                "Services + error detection and corrections + flow control",
-                "Data link protocol + multiple access protocols",
-                "LAN addressing + ARP (Address Resolution Protocol)",
-                "Ethernet, IEEE 802.3 (Ethernet) + 802.4 (Token Bus) + 802.5 (Token Ring)",
-                "CSMA/CD + wireless LANs + PPP (Point to Point Protocol) + wide area protocols",
+                "Services, Error Detection and Corrections",
+                "Flow Control, Data Link Protocol",
+                "Multiple access protocols",
+                "LAN addressing and ARP (Address Resolution Protocol)",
+                "Ethernet, IEEE 802.3 (Ethernet), 802.4 (Token Bus), 802.5 (Token Ring)",
+                "CSMA/CD",
+                "Wireless LANs",
+                "PPP (Point to Point Protocol), Wide area protocols",
             ]
         },
-        "Network Layer": {
+        "Network layer": {
             "topics": [
-                "Addressing (Internet address + classful address) + subnetting",
-                "Routing protocols (RIP, OSPF, BGP, Unicast, Multicast)",
+                "Addressing (Internet address, classful address)",
+                "Subnetting",
+                "Routing Protocols (RIP, OSPF, BGP, Unicast and multicast routing protocols)",
                 "Routing algorithms (shortest path algorithm, flooding, distance vector routing, link state routing)",
-                "ARP, RARP, IP, ICMP",
-                "IPv6 (Packet formats, extension headers, transition from IPv4 to IPv6, multicasting)",
+                "Routing Protocols (ARP, RARP, IP, ICMP)",
+                "IPv6 (Packet formats, Extension headers, Transition from IPv4 to IPv6, Multicasting)",
             ]
         },
-        "Transport Layer": {
+        "Transport layer": {
             "topics": [
-                "Transport service + transport protocols",
-                "Port and socket + connection establishment and release",
-                "Flow control + buffering + multiplexing + de-multiplexing",
+                "The transport service",
+                "Transport protocols",
+                "Port and Socket",
+                "Connection establishment & Connection release",
+                "Flow control & buffering",
+                "Multiplexing & de-multiplexing",
                 "Congestion control algorithm",
             ]
         },
-        "Application Layer": {
+        "Application layer": {
             "topics": [
-                "Web (HTTP & HTTPS) + file transfer (FTP, PuTTY, Win SCP)",
-                "Electronic mail + DNS + P2P applications",
-                "Socket programming + application server concept",
-                "Traffic analyzer concept (MRTG, PRTG, SNMP, packet tracer, Wireshark)",
+                "Web (HTTP & HTTPS)",
+                "File Transfer (FTP, PuTTY, Win SCP)",
+                "Electronic Mail",
+                "DNS, P2P Applications",
+                "Socket Programming",
+                "Application server concept",
+                "Concept of traffic analyzer (MRTG, PRTG, SNMP, Packet tracer, Wireshark)",
             ]
         },
-        "Network Security": {
+        "Network security": {
             "topics": [
-                "Types of computer security + types of security attacks",
-                "Principles of cryptography + RSA algorithm + digital signatures",
-                "Securing email (PGP) + securing TCP connections (SSL)",
-                "Network layer security (IPsec, VPN) + securing wireless LANs (WEP)",
+                "Types of Computer Security",
+                "Types of Security Attacks",
+                "Principles of cryptography",
+                "RSA Algorithm",
+                "Digital Signatures",
+                "Securing e-mail (PGP)",
+                "Securing TCP connections (SSL)",
+                "Network layer security (IPsec, VPN)",
+                "Securing wireless LANs (WEP)",
                 "Firewalls",
             ]
         },
     },
     "Theory of Computation and Computer Graphics (ACtE06)": {
-        "Introduction to Finite Automata": {
+        "Introduction to finite automata": {
             "topics": [
-                "Finite automata + finite state machine",
+                "Introduction to Finite Automata and Finite State Machine",
                 "Equivalence of DFA and NDFA",
-                "Minimization of finite state machines",
-                "Regular expressions + equivalence of regular expressions and finite automata",
+                "Minimization of Finite State Machines",
+                "Regular Expressions",
+                "Equivalence of Regular Expression and Finite Automata",
                 "Pumping lemma for regular language",
             ]
         },
-        "Introduction to Context Free Language": {
+        "Introduction to context free language": {
             "topics": [
-                "Context free grammar (CFG) + derivative trees (bottom-up + top-down approach)",
-                "Parse tree + construction + ambiguous grammar",
-                "Chomsky Normal Form (CNF) + Greibach Normal Form (GNF) + Backus-Naur Form (BNF)",
-                "Push down automata + equivalence of context free language and PDA",
-                "Pumping lemma for context free language + properties of context free language",
+                "Introduction to Context Free Grammar (CFG)",
+                "Derivative trees (Bottom-up and Top-down approach, Leftmost and Rightmost, Language of a grammar)",
+                "Parse tree and its construction",
+                "Ambiguous grammar",
+                "Chomsky Normal Form (CNF)",
+                "Greibach Normal Form (GNF)",
+                "Backus-Naur Form (BNF)",
+                "Push down automata",
+                "Equivalence of context free language and PDA",
+                "Pumping lemma for context free language",
+                "Properties of context free Language",
             ]
         },
-        "Turing Machine": {
+        "Turing machine": {
             "topics": [
-                "Introduction to Turing machines (TM) + notations of Turing machine",
-                "Turing machine as a language recognizer + computing function",
-                "Turing machine with multiple tracks + tapes + non-deterministic Turing machines",
-                "Universal Turing machine + Church-Turing thesis",
-                "Computational complexity + time and space complexity + intractability + reducibility",
+                "Introduction to Turing Machines (TM)",
+                "Notations of Turing Machine",
+                "Acceptance of a string by a Turing Machines",
+                "Turing Machine as a Language Recognizer",
+                "Turing Machine as a Computing Function",
+                "Turing Machine as an enumerator of strings of a language",
+                "Turing Machine with Multiple Tracks",
+                "Turing Machine with Multiple Tapes",
+                "Non-Deterministic Turing Machines",
+                "Church-Turing Thesis",
+                "Universal Turing Machine for encoding of Turing Machine",
+                "Computational Complexity",
+                "Time and Space complexity of a Turing Machine",
+                "Intractability, Reducibility",
             ]
         },
-        "Introduction to Computer Graphics": {
+        "Introduction to computer graphics": {
             "topics": [
-                "Overview of computer graphics",
-                "Graphics hardware (display technology, architecture of raster-scan + vector displays)",
-                "Display processors + output and input devices",
-                "Graphics software + software standards",
+                "Overview of Computer Graphics",
+                "Graphics Hardware (Display Technology, Architecture of Raster-Scan Displays, Vector Displays, Display Processors, output device and Input Devices)",
+                "Graphics Software and Software standards",
             ]
         },
-        "Two-Dimensional Transformation": {
+        "Two-dimensional transformation": {
             "topics": [
-                "2D translation + rotation + scaling + reflection + shear transformation",
+                "Two-dimensional translation, rotation, scaling, reflection, shear transformation",
                 "2D composite transformation",
                 "2D viewing pipeline",
-                "World to screen viewing transformation + clipping (Cohen Sutherland, Liang-Barsky)",
+                "World to screen viewing transformation and clipping (Cohen Sutherland line clipping, Liang-Barsky Line Clipping)",
             ]
         },
-        "Three-Dimensional Transformation": {
+        "Three-dimensional transformation": {
             "topics": [
-                "3D translation + rotation + scaling + reflection + shear transformation",
+                "Three-dimensional translation, rotation, scaling, reflection, shear transformation",
                 "3D composite transformation",
                 "3D viewing pipeline",
-                "Projection concepts (orthographic + parallel + perspective projection)",
+                "Projection concepts (Orthographic, parallel, perspective projection)",
             ]
         },
     },
     "Data Structures and Algorithm, Database System and Operating System (ACtE07)": {
-        "Introduction to Data Structure, List, Linked Lists and Trees": {
+        "Introduction to data structure, list, linked lists and trees": {
             "topics": [
-                "Data types, data structures, abstract data types + time and space analysis (Big O, Omega, Theta notations)",
-                "Linear data structure (stack + queue implementation), stack application: infix to postfix conversion + evaluation of postfix expression",
-                "Array implementation of lists + static and dynamic list structure",
-                "Dynamic implementation of linked list (singly linked list, doubly linked list, circular linked list), basic operations on linked list",
-                "Concept of tree + binary tree operations (search, insertion, deletion), tree traversals (pre-order, post-order, in-order), AVL balanced trees",
+                "Data types, data structures and abstract data types",
+                "Time and space analysis of algorithms (Big O, Omega and Theta notations)",
+                "Linear data structure (Stack and queue implementation)",
+                "Stack application: infix to postfix conversion, evaluation of postfix expression",
+                "Array implementation of lists",
+                "Stack and Queues as list",
+                "Static and dynamic list structure",
+                "Dynamic implementation of linked list",
+                "Types of Linked list: Singly Linked list, Doubly Linked list, Circular Linked list",
+                "Basic operations on Linked list: creation, insertion, and deletion of nodes",
+                "Doubly linked lists and its applications",
+                "Concept of Tree, Operation in Binary tree",
+                "Tree search, insertion/deletions in Binary Tree",
+                "Tree traversals (pre-order, post-order and in-order)",
+                "Height, level and depth of a tree",
+                "AVL balanced trees",
             ]
         },
-        "Sorting, Searching, and Graphs": {
+        "Sorting, searching, and graphs": {
             "topics": [
-                "Types of sorting (internal + external), insertion sort, selection sort, merge sort, radix sort, shell sort, heap sort",
-                "Efficiency of sorting (Big O notation)",
-                "Search techniques (sequential search, binary search, tree search), general search tree",
-                "Hashing (hash function + hash tables, collision resolution technique)",
-                "Graphs (undirected + directed), depth-first traversal, breadth-first traversal, minimum spanning trees, shortest-path algorithms (Dijkstra, greedy algorithm)",
+                "Types of sorting: internal and external",
+                "Insertion and selection sort",
+                "Exchange sort",
+                "Merge and Radix sort",
+                "Shell sort",
+                "Heap sort as a priority queue",
+                "Big O notation and Efficiency of sorting",
+                "Search technique: Sequential search, Binary search and Tree search",
+                "General search tree",
+                "Hashing: Hash function and hash tables, Collision resolution technique",
+                "Undirected and Directed Graphs",
+                "Representation of Graph, Transitive closure of graph",
+                "Warshall’s algorithm",
+                "Depth First Traversal and Breadth First Traversal of Graph",
+                "Topological sorting (Depth first, Breadth first)",
+                "Minimum spanning trees (Prim’s, Kruskal’s and Round-Robin algorithms)",
+                "Shortest-path algorithm (Greedy algorithm, Dijkstra’s Algorithm)",
             ]
         },
-        "Introduction to Data Models, Normalization, and SQL": {
+        "Introduction to data models, normalization, and SQL": {
             "topics": [
-                "Data abstraction + independence, schema + instances, ER model, attributes + keys",
-                "Normal forms (1st, 2nd, 3rd, BCNF), functional dependencies, integrity + domain constraints",
-                "DDL + DML commands, relational algebra, query optimization, query decomposition",
-                "Query cost estimation + evaluation of expressions",
+                "Data Abstraction and Data Independence",
+                "Schema and Instances",
+                "E-R Model, Strong and Weak Entity Sets",
+                "Attributes and Keys, E-R Diagram",
+                "Different Normal Forms (1st, 2nd, 3rd, BCNF)",
+                "Functional Dependencies",
+                "Integrity Constraints and Domain Constraints",
+                "Relations (Joined, Derived)",
+                "Queries under DDL and DML Commands",
+                "Views, Assertions and Triggering",
+                "Relational Algebra",
+                "Query Cost Estimation",
+                "Query Operations, Evaluation of Expressions",
+                "Query Optimization and Query Decomposition",
             ]
         },
-        "Transaction Processing, Concurrency Control and Crash Recovery": {
+        "Transaction processing, concurrency control and crash recovery": {
             "topics": [
-                "ACID properties + concurrent executions, serializability concept",
-                "Lock-based protocols + deadlock handling + prevention",
-                "Failure classification + recovery and atomicity",
-                "Log-based recovery",
+                "ACID properties",
+                "Concurrent Executions",
+                "Serializability Concept",
+                "Lock based Protocols",
+                "Deadlock handling and Prevention",
+                "Failure Classification",
+                "Recovery and Atomicity",
+                "Log-based Recovery",
             ]
         },
-        "Introduction to Operating System and Process Management": {
+        "Introduction to Operating System and process management": {
             "topics": [
-                "Evolution + types of operating systems, OS components, structure + services",
-                "Introduction to process, process states, control, threads, scheduling types",
-                "Principles of concurrency, critical region, race condition, mutual exclusion, semaphores, mutex, message passing, monitors",
-                "Classical problems of synchronization",
+                "Evolution of Operating System",
+                "Type of Operating System",
+                "Operating System Components",
+                "Operating System Structure",
+                "Operating System Services",
+                "Introduction to Process, Process description",
+                "Process states, Process control",
+                "Threads, Processes and Threads",
+                "Types of scheduling",
+                "Principles of Concurrency",
+                "Critical Region, Race Condition",
+                "Mutual Exclusion, Semaphores and Mutex",
+                "Message Passing, Monitors",
+                "Classical Problems of Synchronization",
             ]
         },
-        "Memory Management, File Systems and System Administration": {
+        "Memory management, file systems and system administration": {
             "topics": [
-                "Memory address + swapping, free memory space management, virtual memory management, demand paging",
-                "Page replacement algorithms",
-                "File system implementation, mapping file blocks on disk platter, fragmentation impact",
-                "User account management + system administration tasks",
+                "Memory address",
+                "Swapping and Managing Free Memory Space",
+                "Virtual Memory Management, Demand Paging",
+                "Performance, and Page Replacement Algorithms",
+                "Introduction to File, Directory and File Paths",
+                "File System Implementation",
+                "Impact of Allocation Policy on Fragmentation",
+                "Mapping File Blocks on The Disk Platter",
+                "File System Performance",
+                "Administration Tasks, User Account Management",
+                "Start and Shutdown Procedures",
             ]
         },
     },
     "Software Engineering and Object-Oriented Analysis & Design (ACtE08)": {
-        "Software Process and Requirements": {
+        "Software process and requirements": {
             "topics": [
-                "Software characteristics + quality attributes, software process models (Agile, V-Model, Iterative, Prototype, Big Bang)",
-                "Computer-aided software engineering, functional + non-functional requirements",
-                "User + system requirements, interface specification, software requirements documents",
-                "Requirements elicitation + analysis, validation + management",
+                "Software characteristics",
+                "Software quality attributes",
+                "Software process model (Agile Model, V-Model, Iterative Model, Prototype Model, Big Bang Model)",
+                "Computer-aided software engineering",
+                "Functional and non-functional requirements",
+                "User requirements",
+                "System requirement",
+                "Interface specification",
+                "The software requirements documents",
+                "Requirement’s elicitation and analysis",
+                "Requirement’s validation and management",
             ]
         },
-        "Software Design": {
+        "Software design": {
             "topics": [
-                "Design process + concepts, design modes + heuristics, architectural design decisions",
-                "System organization + modular decomposition styles, control styles",
-                "Reference architectures + multiprocessor architecture",
-                "Client-server + distributed object architectures, inter-organizational distributed computing",
-                "Real-time software design + component-based software engineering",
+                "Design process",
+                "Design Concepts",
+                "Design Mode",
+                "Design Heuristic",
+                "Architectural design decisions",
+                "System organization",
+                "Modular decomposition styles",
+                "Control styles",
+                "Reference architectures",
+                "Multiprocessor architecture",
+                "Client-server architectures",
+                "Distributed object architectures",
+                "Inter-organizational distributed computing",
+                "Real-time software design",
+                "Component-based software engineering",
             ]
         },
-        "Software Testing, Cost Estimation, Quality Management, and Configuration Management": {
+        "Software testing, cost estimation, quality management, and configuration management": {
             "topics": [
-                "Unit, integration, system, component + acceptance testing, test case design + automation",
-                "Metrics for testing + algorithmic cost modeling",
-                "Project duration + staffing, software quality assurance + formal technical reviews",
-                "Statistical software quality assurance + a framework for software metrics",
-                "Configuration management planning + change management, version + release management, CASE tools",
+                "Unit Testing",
+                "Integration testing",
+                "System testing",
+                "Component testing",
+                "Acceptance Testing",
+                "Test case design",
+                "Test automation",
+                "Metrics for testing",
+                "Algorithmic cost modeling",
+                "Project duration and staffing",
+                "Software quality assurance",
+                "Formal technical reviews",
+                "Formal approaches to SQA",
+                "Statistical software quality assurance",
+                "A framework for software metrics",
+                "Matrices for analysis and design model",
+                "ISO standards",
+                "CMMI",
+                "SQA plan",
+                "Configuration management planning",
+                "Change management",
+                "Version and release management",
+                "CASE tools for configuration management",
             ]
         },
-        "Object-Oriented Fundamentals and Analysis": {
+        "Object-oriented fundamentals and analysis": {
             "topics": [
-                "Defining models + requirement process, use cases + object-oriented development cycle",
-                "Unified Modeling Language, building conceptual model + adding associations and attributes",
-                "Representation of system behavior",
+                "Defining Models",
+                "Requirement Process",
+                "Use Cases",
+                "Object Oriented Development Cycle",
+                "Unified Modeling Language",
+                "Building Conceptual Model",
+                "Adding Associations and Attributes",
+                "Representation of System Behavior",
             ]
         },
-        "Object-Oriented Design": {
+        "Object-oriented design": {
             "topics": [
-                "Analysis to design, describing + elaborating use cases",
-                "Collaboration diagrams, objects + patterns, determining visibility",
-                "Class diagrams",
+                "Analysis to Design",
+                "Describing and Elaborating Use Cases",
+                "Collaboration Diagram",
+                "Objects and Patterns",
+                "Determining Visibility",
+                "Class Diagram",
             ]
         },
-        "Object-Oriented Design Implementation": {
+        "Object-oriented design implementation": {
             "topics": [
-                "Programming + development process, mapping design to code",
-                "Creating class definitions from design class diagrams",
-                "Creating methods from collaboration diagrams, updating class definitions",
-                "Classes in code + exception and error handling",
+                "Programming and Development Process",
+                "Mapping Design to Code",
+                "Creating Class Definitions from Design Class Diagrams",
+                "Creating Methods from Collaboration Diagram",
+                "Updating Class Definitions",
+                "Classes in Code",
+                "Exception and Error Handling",
             ]
         },
     },
     "Artificial Intelligence and Neural Networks (ACtE09)": {
-        "Introduction to AI and Intelligent Agents": {
+        "Introduction to AI and intelligent agent": {
             "topics": [
-                "Concept of Artificial Intelligence + AI perspectives, history of AI, applications of AI, foundations of AI",
-                "Introduction to agents, structure of intelligent agents, properties of intelligent agents",
-                "PEAS description of agents, types of agents (simple reflexive, model based, goal based, utility based)",
-                "Environment types (deterministic, stochastic, static, dynamic, observable, semi-observable, single agent, multi-agent)",
+                "Concept of Artificial Intelligence",
+                "AI Perspectives",
+                "History of AI",
+                "Applications of AI",
+                "Foundations of AI",
+                "Introduction of agents",
+                "Structure of Intelligent agent",
+                "Properties of Intelligent Agents",
+                "PEAS description of Agents",
+                "Types of Agents (Simple Reflexive, Model Based, Goal Based, Utility Based)",
+                "Environment Types (Deterministic, Stochastic, Static, Dynamic, Observable, Semi-observable, Single Agent, Multi Agent)",
             ]
         },
-        "Problem Solving and Searching Techniques": {
+        "Problem solving and searching techniques": {
             "topics": [
-                "Definition + problem as state space search, problem formulation, well-defined problems, constraint satisfaction problem",
-                "Uninformed search techniques (depth first search, breadth first search, depth limited search, iterative deepening search, bidirectional search)",
-                "Informed search techniques (greedy best first search, A* search, hill climbing, simulated annealing)",
-                "Game playing + adversarial search techniques, mini-max search, alpha-beta pruning",
+                "Definition",
+                "Problem as a state space search",
+                "Problem formulation",
+                "Well-defined problems",
+                "Constraint satisfaction problem",
+                "Uninformed search techniques (Depth First Search, Breadth First Search, Depth Limited Search, Iterative Deepening Search, Bidirectional Search)",
+                "Informed Search (Greedy Best first search, A* search, Hill Climbing, Simulated Annealing)",
+                "Game playing",
+                "Adversarial search techniques (Mini-max Search, Alpha-Beta Pruning)",
             ]
         },
-        "Knowledge Representation": {
+        "Knowledge representation": {
             "topics": [
-                "Knowledge representations + mappings, approaches to knowledge representation, issues in knowledge representation",
-                "Semantic nets, frames, propositional logic (syntax, semantics, formal logic-connectives, tautology, validity, well-formed formula, inference using resolution)",
-                "Predicate logic (FOPL, syntax, semantics, quantification, rules of inference, unification, resolution refutation system)",
-                "Bayes' rule + its use, Bayesian networks + reasoning in belief networks",
+                "Knowledge representations and Mappings",
+                "Approaches to Knowledge Representation",
+                "Issues in Knowledge Representation",
+                "Semantic Nets",
+                "Frames",
+                "Propositional Logic (PL)",
+                "Predicate Logic (FOPL)",
+                "Bayes' Rule and its use",
+                "Bayesian Networks",
+                "Reasoning in Belief Networks",
             ]
         },
-        "Expert Systems and Natural Language Processing": {
+        "Expert system and natural language processing": {
             "topics": [
-                "Expert systems, architecture of an expert system, knowledge acquisition",
-                "Declarative knowledge vs procedural knowledge, development of expert systems",
-                "Natural language processing terminology, natural language understanding + generation",
-                "Steps of natural language processing, applications of NLP, NLP challenges",
-                "Machine vision concepts + stages, robotics",
+                "Expert Systems",
+                "Architecture of an expert system",
+                "Knowledge acquisition",
+                "Declarative knowledge vs Procedural knowledge",
+                "Development of Expert Systems",
+                "Natural Language Processing Terminology",
+                "Natural Language Understanding and Generation",
+                "Steps of Natural Language Processing",
+                "Applications of NLP",
+                "NLP Challenges",
+                "Machine Vision Concepts",
+                "Machine Vision Stages",
+                "Robotics",
             ]
         },
-        "Machine Learning": {
+        "Machine learning": {
             "topics": [
-                "Introduction to machine learning, concepts of learning",
-                "Supervised, unsupervised, and reinforcement learning, inductive learning (decision tree)",
-                "Statistical-based learning (Naive Bayes model), fuzzy learning + inference system",
-                "Genetic algorithm (operators, encoding, selection algorithms, fitness function, parameters)",
+                "Introduction to Machine Learning",
+                "Concepts of Learning",
+                "Supervised, Unsupervised and Reinforcement Learning",
+                "Inductive learning (Decision Tree)",
+                "Statistical-based Learning (Naive Bayes Model)",
+                "Fuzzy learning",
+                "Fuzzy Inferences System",
+                "Fuzzy Inference Methods",
+                "Genetic Algorithm (Genetic Algorithm Operators, Genetic Algorithm Encoding, Selection Algorithms, Fitness function, Genetic Algorithm Parameters)",
             ]
         },
-        "Neural Networks": {
+        "Neural networks": {
             "topics": [
-                "Biological neural networks vs artificial neural networks (ANN)",
-                "McCulloch-Pitts neuron, mathematical model of ANN, activation functions",
-                "Architectures of neural networks, perceptron, learning rate",
-                "Gradient descent, delta rule, Hebbian learning, Adaline network",
-                "Multilayer perceptron neural networks, backpropagation algorithm, Hopfield neural network",
+                "Biological Neural Networks Vs. Artificial Neural Networks (ANN)",
+                "McCulloch-Pitts Neuron",
+                "Mathematical Model of ANN",
+                "Activation functions",
+                "Architectures of Neural Networks",
+                "The Perceptron",
+                "The Learning Rate",
+                "Gradient Descent",
+                "The Delta Rule",
+                "Hebbian learning",
+                "Adaline network",
+                "Multilayer Perceptron Neural Networks",
+                "Backpropagation Algorithm",
+                "Hopfield Neural Network",
             ]
         },
     },
     "Project Planning, Design and Implementation (AALL10)": {
-        "Engineering Drawings and Its Concepts": {
+        "Engineering drawings and its concepts": {
             "topics": [
                 "Fundamentals of standard drawing sheets",
-                "Dimensions, scale, line diagram",
-                "Orthographic projection, isometric projection/view",
-                "Pictorial views, sectional drawing",
+                "Dimensions",
+                "Scale",
+                "Line diagram",
+                "Orthographic projection",
+                "Isometric projection/view",
+                "Pictorial views",
+                "Sectional drawing",
             ]
         },
         "Engineering Economics": {
             "topics": [
                 "Understanding of project cash flow",
-                "Discount rate, interest and time value of money",
+                "Discount rate",
+                "Interest and time value of money",
                 "Basic methodologies for engineering economics analysis (Discounted Payback Period, NPV, IRR & MARR)",
                 "Comparison of alternatives",
-                "Depreciation system and taxation system in Nepal",
+                "Depreciation system",
+                "Taxation system in Nepal",
             ]
         },
-        "Project Planning and Scheduling": {
+        "Project planning and scheduling": {
             "topics": [
                 "Project classifications",
                 "Project life cycle phases",
                 "Project planning process",
                 "Project scheduling (bar chart, CPM, PERT)",
-                "Resources leveling and smoothing",
-                "Monitoring, evaluation, and controlling",
+                "Resources levelling and smoothing",
+                "Monitoring/evaluation/controlling",
             ]
         },
-        "Project Management": {
+        "Project management": {
             "topics": [
                 "Information system",
                 "Project risk analysis and management",
-                "Project financing, tender and its process",
+                "Project financing",
+                "Tender and its process",
                 "Contract management",
             ]
         },
-        "Engineering Professional Practice": {
+        "Engineering professional practice": {
             "topics": [
                 "Environment and society",
                 "Professional ethics",
                 "Regulatory environment",
                 "Contemporary issues/problems in engineering",
                 "Occupational health and safety",
-                "Roles and responsibilities of Nepal Engineers Association (NEA)",
+                "Roles/responsibilities of Nepal Engineers Association (NEA)",
             ]
         },
         "Engineering Regulatory Body": {
@@ -637,11 +845,12 @@ def generate_dynamic_content_groq(query, model_name=None, temperature=0.5):
         messages=[
             {
                 "role": "system",
-                "content": "As a Engineering tutor, your role is to provide detailed explanations of requested topics without the need for greetings. Your explanations should be detailed and thorough, incorporating examples where necessary to enhance understanding. Ensure that your responses are comprehensive and clear, aiming to thoroughly explain the given topic. Provide JSON response only when asked to respond with JSON. Additionally, when providing a JSON response, remember to use two backward slashes in place of any single backward slashes present in the JSON to ensure correct display when rendered in the UI using streamlit. Avoid dollar symbol in your response till possible.",
+                "content": "As a Engineering tutor, your role is to provide detailed explanations of requested topics without the need for greetings. Your explanations should be detailed and thorough, incorporating examples where necessary to enhance understanding. Ensure that your responses are detailed and clear, aiming to thoroughly explain the given topic. Provide JSON response only when asked to respond with JSON. Keep in mind that you are teaching engineering background student, so cover every important thing in detail, especially for questions that might be asked as MCQs for knowledge assessment. Additionally, when providing a JSON response, remember to use two backslashes in place of any single backward slashes present in the JSON to ensure correct display when extracted and rendered in the UI using streamlit.",
             },
             {"role": "user", "content": query},
         ],
-        model=model_name or "Llama-3.1-8b-Instant",
+        model=model_name or "llama-3.1-70b-versatile",
+        # model=model_name or "Llama-3.1-8b-Instant",
         temperature=temperature,
         top_p=1,
         stream=True,
@@ -1003,8 +1212,8 @@ def stream_response(query):
             {"role": "user", "content": query},
         ],
         # model="llama3-8b-8192",
-        model="gemma2-9b-it",
-        temperature=0.5,
+        model="llama-3.1-70b-versatile",
+        temperature=0.7,
         max_tokens=4096,
         top_p=1,
         stop=None,
