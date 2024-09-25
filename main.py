@@ -10,6 +10,12 @@ from groq import Groq
 # load_dotenv()
 DB_PATH = "generated_content.db"
 
+st.set_page_config(
+    page_title="Computer Engineering NEC",
+    page_icon="🖥️",
+    layout="wide",
+)
+
 ## NEC Syllabus for computer Engineering
 course_structure = {
     "Concept of Basic Electrical and Electronics Engineering (AExE01)": {
