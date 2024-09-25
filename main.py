@@ -706,7 +706,7 @@ create_db()
 
 
 def course_dashboard():
-    st.title("NEC Study Dashboard")
+    st.title("NEC Study Dashboard: COMPUTER ENGINEERING")
 
     selected_unit = st.sidebar.selectbox(
         "Choose a Unit", ["Select a Unit"] + list(course_structure.keys())
@@ -1110,7 +1110,7 @@ def assessment_dashboard(selected_topic, selected_lesson):
         )
 
         if score >= 1:
-            st.success(f"**You scored {score}/10**", icon="🔥")
+            st.success(f"**You scored {score}/15**", icon="🔥")
             # mycode = "<script>alert('Check your feedback😀 Then, You may move to next lesson. Good Luck! ')</script>"
             # components.html(mycode, height=0, width=0)
             st.info("Check Feedback below for wrong Answers, if any.")
@@ -1137,7 +1137,8 @@ def assessment_dashboard(selected_topic, selected_lesson):
                 st.divider()
 
         else:
-            st.write(f"You scored {score}/10")
+            st.warning(f"You scored {score}/15. REVISE AGAIN!!!", icon="👀")
+            st.write(f"You need to score at least 7 to check feedback.")  # Modify above
             st.write(f"Please revise the provided resources and Try again...")
 
     # option to generate a new quiz
