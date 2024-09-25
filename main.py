@@ -1161,12 +1161,84 @@ def assessment_dashboard(selected_topic, selected_lesson):
             st.rerun()
 
 
+def stream_response(query):
+    client = Groq()
+
+    stream = client.chat.completions.create(
+        messages=[
+            {
+                "role": "system",
+                "content": "You are a helpful tutor for computer engineering student from Nepal. Skip Introductions and give brief and correct answer or solution to the query of student to help them have clear concepts on their asked question.",
+            },
+            {"role": "user", "content": query},
+        ],
+        # model="llama3-8b-8192",
+        model="gemma2-9b-it",
+        temperature=0.5,
+        max_tokens=4096,
+        top_p=1,
+        stop=None,
+        stream=True,
+    )
+
+    response_text = ""
+    for chunk in stream:
+        delta_content = chunk.choices[0].delta.content
+        if delta_content:  # Check if not None
+            response_text += delta_content
+            yield response_text
+
+
 def main():
-    st.sidebar.title("NEC Learning App")
+    # st.sidebar.title("NEC Learning App")
 
     # Ensure database and tables are created
     create_db()
     course_dashboard()
+
+    with st.sidebar:
+        st.sidebar.title("NEC Learning App")
+        query_sidebar = st.chat_input("Ask your query", key="sidebar_chat_input")
+
+        if query_sidebar:
+            st.session_state.messages_sidebar = [
+                {"role": "user", "content": query_sidebar}
+            ]
+
+            with st.chat_message("user"):
+                st.code(query_sidebar)
+
+            with st.chat_message("assistant"):
+                message_placeholder = st.empty()
+                response_text = ""
+
+                for ast_mess in stream_response(query_sidebar):
+                    response_text = ast_mess
+                    message_placeholder.markdown(response_text)
+
+                st.session_state.messages_sidebar.append(
+                    {"role": "assistant", "content": response_text}
+                )
+
+    query = st.chat_input("Ask your query", key="main_chat_query")
+
+    if query:
+        st.session_state.messages = [{"role": "user", "content": query}]
+
+        with st.chat_message("user"):
+            st.code(query)
+
+        with st.chat_message("assistant"):
+            message_placeholder = st.empty()
+            response_text = ""
+
+            for ast_mess in stream_response(query):
+                response_text = ast_mess
+                message_placeholder.markdown(response_text)
+
+            st.session_state.messages.append(
+                {"role": "assistant", "content": response_text}
+            )
 
 
 if __name__ == "__main__":
