@@ -1,73 +1,74 @@
 course_structure = {
     "Basic Civil Engineering (ACiE01)": {
-        "Engineering Materials": {
+        "Engineering materials": {
             "topics": [
-                "Properties (physical, chemical, mechanical, thermal)",
-                "Types, characteristics, composition, selection, and usage of engineering materials",
-                "Materials: stones, bricks, tiles, cement, lime, timber, metals/alloys, paints/varnishes, asphalt/bitumen/tar",
+                "Properties (physical, chemical, mechanical and thermal)",
+                "Types, characteristics, composition, selection, and usage/function of engineering materials",
+                "Stones, bricks, tiles, cement, lime, timber, metals/alloys, paints/varnishes, asphalt/bitumen/tar",
             ]
         },
-        "Standards (NS & IS) and Tests for Civil Engineering Materials": {
+        "Standards (NS & IS) and tests for civil engineering materials": {
             "topics": [
-                "Tests of brick: water absorption and compressive tests",
-                "Tests of cement: consistency, setting time, soundness, compressive strength",
-                "Test of aggregate: bulking of sand",
-                "Test of rebar: tensile test",
+                "Tests of brick (water absorption and compressive tests)",
+                "Tests of cement (consistency, setting time, soundness, and compressive strength)",
+                "Test of aggregate (bulking of sand)",
+                "Test of rebar (tensile test)",
             ]
         },
-        "Building Technology": {
+        "Building technology": {
             "topics": [
-                "Building construction technology: brick and stone masonry, carpentry, painting, plastering, concrete roofing, flooring, damp proof course",
-                "Building by-laws",
+                "Building construction technology (brick and stone masonry, carpentry, painting, plastering, concrete roofing, flooring, damp proof course)",
+                "Building by laws",
             ]
         },
-        "Geometric Properties of Sections": {
+        "Geometric properties of sections": {
             "topics": [
                 "Axes of symmetry",
-                "Centre of gravity of different sections: built-up plane figures, standard steel sections",
+                "Centre of gravity of different sections (e.g., built-up plane figures, standard steel sections)",
                 "Moment of inertia",
                 "Radius of gyration",
             ]
         },
-        "Surveying and Levelling": {
+        "Surveying and levelling": {
             "topics": [
                 "Fundamentals of surveying",
-                "Measurements: linear distance, vertical distance, angle and directions",
-                "Levelling, topographic survey (principles and applications)",
+                "Measurements (linear distance, vertical distance, and angle and directions)",
+                "Levelling",
+                "Topographic survey (principles and applications)",
                 "Simple circular curves",
                 "Principles and applications of GPS/GIS",
             ]
         },
-        "Estimating, Costing, and Valuation": {
+        "Estimating, costing, and valuation": {
             "topics": [
                 "Types of estimate",
                 "Methods of estimating",
                 "Rate analysis",
-                "Specifications: purpose, importance, types",
+                "Specifications (purpose, importance and types)",
                 "Valuation",
             ]
         },
     },
     "Soil Mechanics and Foundation Engineering (ACiE02)": {
-        "Soil Properties and Laboratory Tests": {
+        "Soil properties and laboratory tests": {
             "topics": [
                 "Tests for strength, permeability, compressibility, phase relationships",
                 "Determination of index and engineering properties of soils",
-                "Soil classification: descriptive, textural, ISI, MIT, USCS",
+                "Soil classification (descriptive, textural, ISI, MIT, USCS)",
                 "Boring log interpretation",
                 "Sieve analysis and interpretation of results",
                 "Determination of Atterberg limits of soils",
             ]
         },
-        "Stresses on Soil and Seepage": {
+        "Stresses on soil and seepage": {
             "topics": [
-                "Effective stress: factors affecting effective stress, capillary rise, quicksand conditions",
-                "Seepage analysis: seepage pressure, flow nets and applications",
-                "Soil compressibility: various indices",
-                "Compaction: definition, affecting factors",
+                "Effective stress (factors affecting effective stress, capillary rise, and quick sand conditions)",
+                "Seepage analysis [Seepage pressure, flow nets and their applications]",
+                "Soil compressibility (including various indices)",
+                "Compaction (definition, affecting factors)",
             ]
         },
-        "Shear Strength of Soil and Stability of Slopes": {
+        "Shear strength of soil and stability of slopes": {
             "topics": [
                 "Concept of shear strength, principal planes and principal stresses",
                 "Mohr-Coulomb theory of shear strength",
@@ -77,40 +78,40 @@ course_structure = {
                 "Stability of slopes",
             ]
         },
-        "Soil Exploration, Earth Pressure, and Retaining Structures": {
+        "Soil exploration, earth pressure and retaining structures": {
             "topics": [
-                "Soil exploration: methods, planning, soil sampling, samplers, field tests, site investigation reports",
+                "Soil exploration (methods, planning, soil sampling and samplers, field tests, site investigation reports)",
                 "Earth pressure theories",
                 "Stability analysis of retaining walls",
                 "Techniques to increase stability of retaining walls",
             ]
         },
-        "Fundamentals of Foundation": {
+        "Fundamentals of foundation": {
             "topics": [
-                "Definition of foundation",
-                "Types of foundation: shallow and deep",
-                "Functions of foundation",
+                "Definition",
+                "Types (Shallow and Deep)",
+                "Functions",
                 "Factors affecting foundation",
-                "Site investigation for foundation",
+                "Site investigation of foundation",
                 "Concept of spread and mat foundation",
             ]
         },
-        "Bearing Capacity and Foundation Settlements": {
+        "Bearing capacity and foundation settlements": {
             "topics": [
-                "Bearing capacity: types, effects of various factors",
+                "Bearing capacity (types, effects of various factors)",
                 "Modes of foundation failure",
                 "Terzaghi’s general bearing capacity theory",
                 "Ultimate bearing capacity of cohesion-less and cohesive soils",
-                "Consolidation: concept, types, tests",
-                "Settlement: types, nature, effects, and calculations",
+                "Consolidation (concept, types and tests)",
+                "Settlement (types, nature, effects and calculations)",
             ]
         },
     },
     "Basic Water Resources Engineering (ACiE03)": {
-        "Fluids and Their Properties": {
+        "Fluids and their properties": {
             "topics": [
                 "Types of fluids",
-                "Fluid properties: mass density, specific weight, specific gravity, specific volume, viscosity, compressibility, capillarity, surface tension, cavitation, vapour pressure",
+                "Fluid properties (mass density, specific weight, specific gravity, specific volume, viscosity, compressibility, capillarity, surface tension, cavitation, vapour pressure)",
             ]
         },
         "Hydrostatics": {
@@ -119,13 +120,13 @@ course_structure = {
                 "Pascal’s law",
                 "Pressure-depth relationship",
                 "Manometers",
-                "Pressure force and center of pressure on submerged bodies: plane and curved surfaces, practical applications",
+                "Pressure force and centre of pressure on submerged bodies (plane and curved surfaces, practical applications)",
                 "Pressure diagrams",
                 "Buoyancy",
                 "Stability of floating/submerged bodies",
             ]
         },
-        "Hydro-kinematics and Hydro-dynamics": {
+        "Hydro-kinematics and hydro-dynamics": {
             "topics": [
                 "Classification of fluid flow",
                 "Conservation of mass (continuity equation) and momentum equations and their applications",
@@ -133,49 +134,47 @@ course_structure = {
                 "Flow measurement",
             ]
         },
-        "Pipe Flow": {
+        "Pipe flow": {
             "topics": [
-                "Types of pipe flow",
+                "Types of flow",
                 "Governing equations",
                 "Major and minor head losses",
-                "Hydraulic Grade Line (HGL) and Total Energy Line (TEL)",
-                "Pipe design",
+                "HGL and TEL lines",
+                "Design",
                 "Pipe network problems",
                 "Unsteady flow in pipes and relief devices",
             ]
         },
-        "Open Channel Flow": {
+        "Open channel flow": {
             "topics": [
-                "Geometrical properties of open channels",
-                "Types of flows",
-                "Energy and momentum principles: Specific Energy and Specific Force",
+                "Geometrical properties",
+                "Various types of flows",
+                "Energy and momentum principles (Specific Energy and Specific Force)",
                 "Types of gradually varied flow profiles",
-                "Hydraulic jump: types, theory for horizontal and rectangular",
-                "Flow in mobile boundary channels: design principles/approaches, inception motion condition, Shield diagram",
+                "Hydraulic jump (types, theory for horizontal and rectangular)",
+                "Flow in mobile boundary channel (design principles/approaches; inception motion condition; Shield diagram)",
             ]
         },
         "Hydrology": {
             "topics": [
                 "Hydrologic cycle and water balance components",
                 "Flow measurement and rating curves",
-                "Hydrograph analysis and synthetic unit hydrographs",
+                "Hydrographs analysis and synthetic unit hydrographs",
                 "Rainfall-runoff analysis",
-                "Flood hydrology: flood frequency analysis and design flood",
+                "Flood hydrology (flood frequency analysis and design flood)",
                 "Groundwater hydrology",
             ]
         },
     },
     "Structural Mechanics (ACiE04)": {
-        "Shear Forces and Bending Moments": {
+        "Shear forces and bending moments": {
             "topics": [
-                "Axial forces",
-                "Shear forces",
-                "Bending moments",
+                "Axial forces, shear forces, and bending moments",
                 "Loads and load superposition",
-                "Relationship and diagram interpretation (AF, SF, BM)",
+                "Relationship and diagram Interpretation (AF, SF, BM)",
             ]
         },
-        "Stress and Strain Analysis": {
+        "Stress and strain analysis": {
             "topics": [
                 "Normal and shear stresses",
                 "Principal stresses and principal planes",
@@ -184,7 +183,7 @@ course_structure = {
                 "Torsion",
             ]
         },
-        "Theory of Flexure and Columns": {
+        "Theory of flexure and columns": {
             "topics": [
                 "Co-planar and pure bending",
                 "Elastic curve",
@@ -195,7 +194,7 @@ course_structure = {
                 "Euler’s formula for long column",
             ]
         },
-        "Determinate Structures-1": {
+        "Determinate structures-1": {
             "topics": [
                 "Degree of determinacy",
                 "Energy Methods",
@@ -203,26 +202,26 @@ course_structure = {
                 "Deflection of beams and portal frame",
             ]
         },
-        "Determinate Structures-2": {
+        "Determinate structures-2": {
             "topics": [
-                "Influence lines for simple structures with point loads and UDL",
+                "Influence Lines for Simple Structures with point loads and UDL",
                 "Analysis of two-hinged arches",
             ]
         },
-        "Indeterminate Structures": {
+        "Indeterminate structures": {
             "topics": [
                 "Flexibility Method",
-                "Two-hinged parabolic arches",
+                "Two-Hinged Parabolic Arches",
                 "Slope Deflection Method",
                 "Moment Distribution Method",
                 "Stiffness Method",
-                "Influence Lines for continuous beams",
+                "Influence Lines for Continuous Beams",
                 "Elementary Plastic Analysis",
             ]
         },
     },
     "Design of Structures (ACiE05)": {
-        "Loads and Load Combinations": {
+        "Loads and load combinations": {
             "topics": [
                 "Dead Load",
                 "Imposed Load",
@@ -231,33 +230,28 @@ course_structure = {
                 "Earthquake Load",
             ]
         },
-        "Concrete Technology": {
+        "Concrete technology": {
             "topics": [
-                "Materials",
-                "Properties",
-                "Mix Design",
-                "Testing",
-                "Quality Control",
-                "Codes (IS and NS)",
+                "Concrete technology (materials, properties, mix design, testing, quality control, and codes (IS and NS))"
             ]
         },
-        "RCC Structures-1": {
+        "RCC structures-1": {
             "topics": [
                 "Working stress and limit state methods",
                 "Design of beams and slabs",
-                "Analysis of RC beams and slabs in bending, shear, deflection, bond and end anchorage",
+                "Analysis of RC beams and slabs in bending, shear, deflection, bond, and end anchorage",
                 "RCC",
                 "NS & IS codes",
             ]
         },
-        "RCC Structures-2": {
+        "RCC structures-2": {
             "topics": [
                 "Design of columns and isolated/combined footings",
                 "Pre-stressed concrete",
                 "NS & IS codes",
             ]
         },
-        "Steel Structures": {
+        "Steel structures": {
             "topics": [
                 "Standard and built-up sections",
                 "Design of bolted and welded connections",
@@ -265,20 +259,17 @@ course_structure = {
                 "NS and IS codes",
             ]
         },
-        "Timber and Masonry Structures": {
+        "Timber and masonry structures": {
             "topics": [
                 "Design principles of timber beams and columns",
-                "Design of masonry structures",
-                "Mandatory rules of thumb",
-                "Nepal Building Code (NBC)",
-                "Properties of masonry structures",
+                "Design of masonry structures (Mandatory rules of thumb, Nepal Building Code (NBC), properties)",
                 "Failure modes of masonry structure",
-                "Mud mortar, lime mortar and cement mortar and its properties",
+                "Mud mortar, lime mortar, and cement mortar and its properties",
             ]
         },
     },
     "Water Supply, Sanitation and Environment (ACiE06)": {
-        "Water Sources, Water Quality and Water Demand": {
+        "Water sources, water quality and water demand": {
             "topics": [
                 "Sources of water (surface and groundwater) and their selection",
                 "Impurities in water (suspended, colloidal, dissolved)",
@@ -289,17 +280,17 @@ course_structure = {
                 "Water demand estimation",
             ]
         },
-        "Intake and Distribution Systems": {
+        "Intake and distribution systems": {
             "topics": [
                 "Types of intakes",
-                "Factors affecting the selection of intake location",
-                "Types and purposes of pipe materials, joints, valves, and fittings",
+                "Factors affecting the selection of location of intake",
+                "Types and purposes of pipe materials, joints, valves and fittings",
                 "Break pressure tanks",
-                "Service reservoirs and capacity determination",
+                "Service reservoirs and their capacity determination",
                 "Design of branch and looped water distribution systems",
             ]
         },
-        "Water Treatment Process and Technologies": {
+        "Water treatment process and technologies": {
             "topics": [
                 "Various treatment processes and their purposes",
                 "Screening",
@@ -309,12 +300,12 @@ course_structure = {
                 "Filtration",
                 "Disinfection",
                 "Softening",
-                "Miscellaneous treatments (aeration, removal of iron and manganese, removal of color, odor, taste)",
+                "Miscellaneous treatments (aeration, removal of iron and manganese, removal of color/odour/taste)",
             ]
         },
-        "Design and Construction of Sewers": {
+        "Design and construction of sewers": {
             "topics": [
-                "Estimation of wastewater quantity",
+                "Estimation of quantity of wastewater",
                 "Sewerage system and types",
                 "Design criteria of sewers",
                 "Shapes of sewers",
@@ -323,7 +314,7 @@ course_structure = {
                 "Construction of sewers and sewer appurtenances",
             ]
         },
-        "Treatment and Disposal of Wastewater": {
+        "Treatment and disposal of wastewater": {
             "topics": [
                 "Characteristics and examination of sewage",
                 "Decomposition of wastewater",
@@ -333,28 +324,30 @@ course_structure = {
                 "Sewage filtration",
                 "Activated sludge process",
                 "Oxidation ponds",
-                "Wastewater disposal by dilution (oxygen sag curve, Streeter Phelp’s equation)",
+                "Wastewater disposal by dilution (oxygen sag curve; Streeter Phelp’s equation)",
                 "Wastewater disposal by land treatment",
                 "Sludge and solid waste disposal methods",
                 "Latrine and septic tank",
             ]
         },
-        "Concept of Environmental Assessment": {
+        "Concept of environmental assessment": {
             "topics": [
-                "BES, IEE, EIA",
-                "Government’s act, rules, regulations, and procedures for BES/IEE/EIA",
+                "BES",
+                "IEE",
+                "EIA",
+                "Government’s act, rules/regulations/procedures for BES/IEE/EIA",
                 "Types of disaster and its mitigation",
             ]
         },
     },
     "Irrigation and Drainage (ACiE07)": {
-        "Water Demand Estimation": {
+        "Water demand estimation": {
             "topics": [
                 "Crop water and irrigation water requirements",
                 "Water availability for irrigation",
                 "Command areas",
                 "Irrigation intensity",
-                "Duty, delta, and their relationship",
+                "Duty, delta and their relationship",
                 "Water losses and irrigation efficiencies",
                 "Effective rainfall",
                 "Soil-moisture-irrigation relationship",
@@ -362,75 +355,75 @@ course_structure = {
                 "Design discharge for canals",
             ]
         },
-        "Design of Canals": {
+        "Design of canals": {
             "topics": [
-                "Canal types, network, and alignment",
+                "Canal types, network and alignment",
                 "Tractive force approach of canal design",
                 "Design of stable canals",
                 "Alluvial canals (Kennedy’s and Lacey’s theory)",
                 "Lined canals",
             ]
         },
-        "Diversion Headworks": {
+        "Diversion headworks": {
             "topics": [
                 "Components of headwork",
                 "Seepage theories and their applications (Bligh’s, Lane’s, Khosla’s)",
-                "Design of silt control structures (excluder, ejector, and settling basins)",
-                "Design of weir/barrage (crest, length, and thickness of impervious floor)",
+                "Design of silt control structures (excluder, ejector and settling basins)",
+                "Design of weir/barrage (crest, length and thickness of impervious floor)",
                 "Design of energy dissipaters",
             ]
         },
-        "River Training Works": {
+        "River training works": {
             "topics": [
                 "River stages and need of river training",
-                "Design of river training works (guide bund and launching aprons, levees, and spurs)",
+                "Design of river training works (guide bund and launching aprons, levees and spurs)",
                 "Watershed management",
             ]
         },
-        "Regulating and Cross-Drainage Structures": {
+        "Regulating and cross-drainage structures": {
             "topics": [
                 "Functions of various types of regulators",
-                "Design of regulators and escapes (crest, length, and thickness of impervious floor)",
+                "Design of regulators and escapes (crest, length and thickness of impervious floor)",
                 "Design of pipe outlet (free and submerged)",
                 "Design of vertical drop (crest, length, and thickness of impervious floor)",
                 "Design of cross-drainage structures",
             ]
         },
-        "Water Logging and Drainage": {
+        "Water logging and drainage": {
             "topics": [
-                "Causes, effects, and preventive measures",
+                "Causes, effects and preventive measures",
                 "Design of surface and sub-surface drainage systems",
             ]
         },
     },
     "Hydropower (ACiE08)": {
-        "Planning of Hydropower Projects": {
+        "Planning of hydropower projects": {
             "topics": [
                 "Power potential (gross, technical, economic) of Nepal and the world",
                 "Stages of hydropower development",
                 "Hydropower development in Nepal (history, policy, acts & regulation)",
             ]
         },
-        "Power and Energy Potential Study": {
+        "Power and energy potential study": {
             "topics": [
                 "Power and energy potentials",
                 "Methods of fixing installed capacity of a plant",
-                "Types of hydropower plants on various bases",
+                "Types of hydropower plants on various basis",
                 "Components of different types of hydropower projects",
                 "Reservoirs and their regulation",
             ]
         },
-        "Headworks of Storage Plants": {
+        "Headworks of storage plants": {
             "topics": [
                 "Components of a typical storage plant",
                 "Dams (types, functions, selection, design, failure modes and remedies)",
                 "Stability analysis of gravity dam",
                 "Seepage control and foundation treatment in dams",
-                "Design of intake, spillway, and energy dissipaters",
+                "Design of intake, spillway and energy dissipaters",
                 "Gates (types and locations)",
             ]
         },
-        "Headworks of Run-of-River (ROR) Plants": {
+        "Headworks of run-of-river (ROR) plants": {
             "topics": [
                 "Components of a typical ROR plant",
                 "Design of intake",
@@ -441,16 +434,16 @@ course_structure = {
                 "Estimation of flushing frequency for sediments",
             ]
         },
-        "Water Conveyance Structures": {
+        "Water conveyance structures": {
             "topics": [
-                "Hydraulic tunnels, cross-sections, and hydraulic design (velocity and sizing)",
+                "Hydraulic tunnels, x-sections, and hydraulic design (velocity and sizing)",
                 "Tunnel lining",
                 "Design of forebay and surge tanks",
                 "Design of penstocks and pressure shaft",
                 "Hydraulic transients (water hammer)",
             ]
         },
-        "Hydro-electric Machines and Powerhouse": {
+        "Hydro-electric machines and powerhouse": {
             "topics": [
                 "Hydro-mechanical equipment and their functions",
                 "Types of turbines and performance characteristics",
@@ -465,7 +458,7 @@ course_structure = {
         },
     },
     "Transportation (ACiE09)": {
-        "Highway Planning and Survey": {
+        "Highway planning and survey": {
             "topics": [
                 "Modes of transport",
                 "History of road development in Nepal",
@@ -476,7 +469,7 @@ course_structure = {
                 "Road Standards of Nepal",
             ]
         },
-        "Geometric Design of Highway": {
+        "Geometric design of highway": {
             "topics": [
                 "Basic design control and criteria",
                 "Elements of highway cross-section",
@@ -490,7 +483,7 @@ course_structure = {
                 "Design considerations for hill roads",
             ]
         },
-        "Highway Materials": {
+        "Highway materials": {
             "topics": [
                 "Types of aggregates and tests on their gradation, strength, durability",
                 "Binding materials and their tests",
@@ -498,7 +491,7 @@ course_structure = {
                 "Evaluation of subgrade soil",
             ]
         },
-        "Traffic Engineering and Safety": {
+        "Traffic engineering and safety": {
             "topics": [
                 "Impact of human and vehicular characteristics on traffic planning",
                 "Traffic operations and regulations",
@@ -510,27 +503,27 @@ course_structure = {
                 "Road safety measures",
             ]
         },
-        "Road Pavement": {
+        "Road pavement": {
             "topics": [
                 "Different types of pavement",
                 "Design methods for flexible and rigid pavements (DOR Guidelines)",
                 "Loads and other factors controlling pavement design",
-                "Stress due to load and temperature",
+                "Stress due to load, temperature",
             ]
         },
-        "Road Construction & Maintenance": {
+        "Road construction & maintenance": {
             "topics": [
                 "Activities, techniques, tools, equipment and plants used in road construction",
                 "Preparation of road subgrade",
                 "Field compaction control and soil stabilization",
                 "Construction of asphalt concrete layers",
-                "Construction procedure for penetration macadam, bituminous bound macadam, and plain cement concrete pavements",
+                "Construction procedure for penetration macadam, bituminous bound macadam and plain cement concrete pavements",
                 "Road maintenance, repair and rehabilitation",
             ]
         },
     },
     "Project Planning, Design and Implementation (AALL10)": {
-        "Engineering Drawings and its Concepts": {
+        "Engineering drawings and its concepts": {
             "topics": [
                 "Fundamentals of standard drawing sheets",
                 "Dimensions",
@@ -545,14 +538,13 @@ course_structure = {
         "Engineering Economics": {
             "topics": [
                 "Understanding of project cash flow",
-                "Discount rate",
-                "Interest and time value of money",
+                "Discount rate, interest and time value of money",
                 "Basic methodologies for engineering economics analysis (Discounted Payback Period, NPV, IRR & MARR)",
                 "Comparison of alternatives",
                 "Depreciation system and taxation system in Nepal",
             ]
         },
-        "Project Planning and Scheduling": {
+        "Project planning and scheduling": {
             "topics": [
                 "Project classifications",
                 "Project life cycle phases",
@@ -562,7 +554,7 @@ course_structure = {
                 "Monitoring/evaluation/controlling",
             ]
         },
-        "Project Management": {
+        "Project management": {
             "topics": [
                 "Information system",
                 "Project risk analysis and management",
@@ -571,7 +563,7 @@ course_structure = {
                 "Contract management",
             ]
         },
-        "Engineering Professional Practice": {
+        "Engineering professional practice": {
             "topics": [
                 "Environment and society",
                 "Professional ethics",
