@@ -637,13 +637,19 @@ def generate_dynamic_content_groq(query, model_name=None, temperature=0.5):
         messages=[
             {
                 "role": "system",
-                "content": "As a Engineering tutor, your role is to provide detailed explanations of requested topics without the need for greetings. Your explanations should be detailed and thorough, incorporating examples where necessary to enhance understanding. Ensure that your responses are comprehensive and clear, aiming to thoroughly explain the given topic. Provide JSON response only when asked to respond with JSON. Additionally, when providing a JSON response, remember to use two backward slashes in place of any single backward slashes present in the JSON to ensure correct display when rendered in the UI using streamlit. Avoid dollar symbol in your response till possible.",
+                "content": """As an engineering tutor of Electrical And Electronics Engineering, your task is to provide detailed explanations of requested engineering topics. Your goal is to cover all crucial aspects of the topic, incorporating relevant examples to enhance understanding. Aim to address important, tricky or confusing points that might be asked in multiple-choice questions for knowledge assessment. Remember that you are tutoring an engineering background student, so cover everything in detail and don't miss anything.
+
+Your responses should be clear and detailed, offering thorough explanations that enhance the reader's understanding of the topic. Additionally, be prepared to provide JSON responses when explicitly requested by the user, ensuring that any single backward slashes in the JSON are replaced with two backslashes to ensure correct display when extracted and rendered in the UI using streamlit. Otherwise, when responding besides JSON, respond as it is.
+
+Please ensure that your explanations are informative and well-structured, allowing for a detailed grasp of the engineering topics.""",
             },
             {"role": "user", "content": query},
         ],
-        model=model_name or "Llama-3.1-8b-Instant",
+        model=model_name or "llama-3.1-70b-versatile",
+        # model=model_name or "Llama-3.1-8b-Instant",
         temperature=temperature,
         top_p=1,
+        max_tokens=7500,
         stream=True,
     )
 
@@ -713,7 +719,7 @@ create_db()
 
 
 def course_dashboard():
-    st.title("NEC Study Dashboard: ELECTRICAL AND ELECTRONICS ENGINEERING")
+    st.title("NEC Study: ELECTRICAL AND ELECTRONICS ENGINEERING")
 
     selected_unit = st.sidebar.selectbox(
         "Choose a Unit", ["Select a Unit"] + list(course_structure.keys())
@@ -750,69 +756,6 @@ def course_dashboard():
                     st.sidebar.write("Using cached content")
 
                 st.write(explanation, unsafe_allow_html=True)
-                st.write("### Practice Problems")
-
-                problems_json = retrieve_problems(selected_unit, f"{selected_topic}")
-                if regenerate_content or problems_json is None:
-                    with st.spinner("Generating practice problems..."):
-                        problems_json = generate_practice_problems_with_retries(
-                            explanation, selected_unit
-                        )
-                        if problems_json:
-                            store_problems(
-                                selected_unit,
-                                f"{selected_topic}",
-                                json.dumps(problems_json),
-                            )
-                            st.sidebar.write("New problems generated")
-                else:
-                    st.sidebar.write("Using cached practice problems")
-
-                if problems_json:
-                    problems = (
-                        json.loads(problems_json)
-                        if isinstance(problems_json, str)
-                        else problems_json
-                    )
-                    expander_state_key = f"{selected_unit}_{selected_topic}_expander"
-
-                    with st.expander(
-                        "Show Practice Problems",
-                        expanded=st.session_state.get(expander_state_key, False),
-                    ):
-                        st.session_state[expander_state_key] = st.session_state.get(
-                            expander_state_key, False
-                        )
-                        for i, problem in enumerate(problems.get("questions", [])):
-                            st.markdown(
-                                f":orange[**Question {i+1}:** {problem['question']}]",
-                                unsafe_allow_html=True,
-                            )
-                            if st.button(
-                                f"Show Answer to Q{i+1}", key=f"show_answer_{i+1}"
-                            ):
-                                with st.spinner(f"Showing answer to Question {i+1}..."):
-                                    st.markdown(f"**Answer:** {problem['solution']}")
-
-                else:
-                    st.write(
-                        "Practice sets not available! Please try generating again."
-                    )
-
-                if st.button("New Practice Sets", key="new_practice_sets"):
-                    with st.spinner("Generating new practice problems..."):
-                        explanation = retrieve_content(selected_unit, selected_topic)
-                        problems_json = generate_practice_problems_with_retries(
-                            explanation, selected_unit
-                        )
-                        if problems_json:
-                            store_problems(
-                                selected_unit,
-                                f"{selected_topic}",
-                                json.dumps(problems_json),
-                            )
-                            st.empty()
-                            st.rerun()
 
                 st.write("### MCQs")
                 assessment_expander_key = f"{selected_unit}_assessment_expander"
@@ -824,117 +767,6 @@ def course_dashboard():
                 if st.session_state[assessment_expander_key]:
                     with st.spinner("Generating assessment..."):
                         assessment_dashboard(selected_unit, selected_topic)
-
-
-def generate_practice_problems_with_retries(explanation, selected_topic):
-    max_retries = 1
-    temperatures = [0.7, 0.3, 0.9]
-    groq_models = [
-        "Llama-3.1-8b-Instant",
-        "llama3-8b-8192",
-        "Llama-3.1-70b-Versatile",
-        "gemma2-9b-it",
-        "mixtral-8x7b-32768",
-    ]
-    github_models = ["gpt-4o-mini", "gpt-4o"]
-
-    def try_generate(model_type, model_name, temperature):
-        try:
-            # st.write(
-            #     f"Attempting generation with {model_type} model '{model_name}' at temperature {temperature}"
-            # )
-            problems_response = generate_dynamic_content(
-                f"""Based on the following lesson content, generate 2 simple, 2 intermediate, and 2 complex questions along with their respective answers for the topic {selected_topic}. Strictly use the given JSON Format below as your response format.
-                
-                # Lesson Content: {explanation}
-                
-                # JSON Format:
-                {{
-                    "questions": [
-                        {{
-                            "difficulty": "simple",
-                            "question": "Simple question 1",
-                            "solution": "solution 1"
-                        }},
-                        {{
-                            "difficulty": "simple",
-                            "question": "Simple question 2",
-                            "solution": "solution 2"
-                        }},
-                        {{
-                            "difficulty": "intermediate",
-                            "question": "Intermediate question 1",
-                            "solution": "solution 1"
-                        }},
-                        {{
-                            "difficulty": "intermediate",
-                            "question": "Intermediate question 2",
-                            "solution": "solution 2"
-                        }},
-                        {{
-                            "difficulty": "complex",
-                            "question": "Complex question 1",
-                            "solution": "solution 1"
-                        }},
-                        {{
-                            "difficulty": "complex",
-                            "question": "Complex question 2",
-                            "solution": "solution 2"
-                        }}
-                    ]
-                }}""",
-                model_type=model_type,
-                model_name=model_name,
-                temperature=temperature,
-            )
-
-            problems_json = extract_json_from_response(problems_response)
-            return problems_json
-        except Exception as e:
-            st.error(f"Error occurred: {str(e)}. Retrying...")
-
-    model_index = 0
-    attempts = 0
-    temperature_index = 0
-    while model_index < len(groq_models):
-        model_name = groq_models[model_index]
-        temperature = temperatures[temperature_index]
-        problems_json = try_generate("groq", model_name, temperature)
-        if problems_json:
-            return problems_json
-        attempts += 1
-        temperature_index += 1
-        if temperature_index >= len(temperatures):
-            temperature_index = 0
-            model_index += 1
-        if attempts >= max_retries * len(temperatures) * len(groq_models):
-            break
-
-    st.error(
-        "Maximum retry attempts reached with Groq models. Switching to GitHub models."
-    )
-
-    model_index = 0
-    attempts = 0
-    temperature_index = 0
-    while model_index < len(github_models):
-        model_name = github_models[model_index]
-        temperature = temperatures[temperature_index]
-        problems_json = try_generate("github", model_name, temperature)
-        if problems_json:
-            return problems_json
-        attempts += 1
-        temperature_index += 1
-        if temperature_index >= len(temperatures):
-            temperature_index = 0
-            model_index += 1
-        if attempts >= max_retries * len(temperatures) * len(github_models):
-            break
-
-    st.error("Maximum retry attempts reached with all models.")
-
-    st.error("Failed to generate practice problems after several attempts.")
-    return None
 
 
 def generate_assessment_with_retries(selected_topic, selected_lesson):
@@ -1003,7 +835,7 @@ def generate_assessment_with_retries(selected_topic, selected_lesson):
         if attempts >= max_retries * len(temperatures) * len(groq_models):
             break
 
-    st.error("Maximum retry attempts reached with Groq models. Switching...")
+    # st.error("Maximum retry attempts reached with Groq models. Switching...")
 
     model_index = 0
     attempts = 0
@@ -1021,8 +853,8 @@ def generate_assessment_with_retries(selected_topic, selected_lesson):
             model_index += 1
         if attempts >= max_retries * len(temperatures) * len(github_models):
             break
-        st.error("Maximum retry attempts reached with Github models.")
-    st.error("Maximum retry attempts reached with all models.")
+    #     st.error("Maximum retry attempts reached with Github models.")
+    # st.error("Maximum retry attempts reached with all models.")
     st.error("Failed to generate assessment after several attempts.")
     st.error("Please retry generating again...")
     return None
@@ -1162,12 +994,84 @@ def assessment_dashboard(selected_topic, selected_lesson):
             st.rerun()
 
 
+def stream_response(query):
+    client = Groq()
+
+    stream = client.chat.completions.create(
+        messages=[
+            {
+                "role": "system",
+                "content": "You are a helpful tutor for electrical and electronics engineering student from Nepal. Skip Introductions and give brief and correct answer or solution to the query of student to help them have clear concepts on their asked question. They ask questions mostly for understanding multiple choice type of questions. Answer accrodingly.",
+            },
+            {"role": "user", "content": query},
+        ],
+        # model="llama3-8b-8192",
+        model="llama-3.1-70b-versatile",
+        temperature=0.7,
+        max_tokens=4096,
+        top_p=1,
+        stop=None,
+        stream=True,
+    )
+
+    response_text = ""
+    for chunk in stream:
+        delta_content = chunk.choices[0].delta.content
+        if delta_content:  # Check if not None
+            response_text += delta_content
+            yield response_text
+
+
 def main():
-    st.sidebar.title("NEC Learning App")
+    # st.sidebar.title("NEC Learning App")
 
     # Ensure database and tables are created
     create_db()
     course_dashboard()
+
+    with st.sidebar:
+        st.sidebar.title("NEC Learning App")
+        query_sidebar = st.chat_input("Ask your query", key="sidebar_chat_input")
+
+        if query_sidebar:
+            st.session_state.messages_sidebar = [
+                {"role": "user", "content": query_sidebar}
+            ]
+
+            with st.chat_message("user"):
+                st.code(query_sidebar)
+
+            with st.chat_message("assistant"):
+                message_placeholder = st.empty()
+                response_text = ""
+
+                for ast_mess in stream_response(query_sidebar):
+                    response_text = ast_mess
+                    message_placeholder.markdown(response_text)
+
+                st.session_state.messages_sidebar.append(
+                    {"role": "assistant", "content": response_text}
+                )
+
+    query = st.chat_input("Ask your query", key="main_chat_query")
+
+    if query:
+        st.session_state.messages = [{"role": "user", "content": query}]
+
+        with st.chat_message("user"):
+            st.code(query)
+
+        with st.chat_message("assistant"):
+            message_placeholder = st.empty()
+            response_text = ""
+
+            for ast_mess in stream_response(query):
+                response_text = ast_mess
+                message_placeholder.markdown(response_text)
+
+            st.session_state.messages.append(
+                {"role": "assistant", "content": response_text}
+            )
 
 
 if __name__ == "__main__":
