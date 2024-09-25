@@ -11,482 +11,561 @@ from groq import Groq
 DB_PATH = "generated_content.db"
 
 st.set_page_config(
-    page_title="Computer Engineering NEC",
-    page_icon="🖥️",
+    page_title="Civil Engineering NEC",
+    page_icon="👷‍♂️",
     layout="wide",
 )
 
-## NEC Syllabus for computer Engineering
+## NEC Syllabus for Civil Engineering
 course_structure = {
-    "Concept of Basic Electrical and Electronics Engineering (AExE01)": {
-        "Basic Concept": {
+    "Basic Civil Engineering (ACiE01)": {
+        "Engineering Materials": {
             "topics": [
-                "Ohm's law + electric voltage + current + power and energy",
-                "Conducting and insulating materials",
-                "Series and parallel electric circuits + star-delta and delta-star conversion",
-                "Kirchhoff’s law + linear and non-linear circuit + bilateral and unilateral circuits",
-                "Active and passive circuits",
+                "Properties (physical, chemical, mechanical, thermal)",
+                "Types, characteristics, composition, selection, and usage of engineering materials",
+                "Materials: stones, bricks, tiles, cement, lime, timber, metals/alloys, paints/varnishes, asphalt/bitumen/tar",
             ]
         },
-        "Network Theorems": {
+        "Standards (NS & IS) and Tests for Civil Engineering Materials": {
             "topics": [
-                "Superposition theorem + Thevenin's theorem + Norton's theorem",
-                "Maximum power transfer theorem",
-                "R-L, R-C, R-L-C circuits + resonance in AC series and parallel circuit",
-                "Active and reactive power",
+                "Tests of brick: water absorption and compressive tests",
+                "Tests of cement: consistency, setting time, soundness, compressive strength",
+                "Test of aggregate: bulking of sand",
+                "Test of rebar: tensile test",
             ]
         },
-        "Alternating Current Fundamentals": {
+        "Building Technology": {
             "topics": [
-                "Principle of generation of alternating voltages and currents + equations and waveforms",
-                "Average, peak and RMS values",
-                "Three phase system",
+                "Building construction technology: brick and stone masonry, carpentry, painting, plastering, concrete roofing, flooring, damp proof course",
+                "Building by-laws",
             ]
         },
-        "Semiconductor Devices": {
+        "Geometric Properties of Sections": {
             "topics": [
-                "Semiconductor diode + characteristics",
-                "BJT configuration and biasing + small and large signal model",
-                "Working principle and application of MOSFET and CMOS",
+                "Axes of symmetry",
+                "Centre of gravity of different sections: built-up plane figures, standard steel sections",
+                "Moment of inertia",
+                "Radius of gyration",
             ]
         },
-        "Signal Generator": {
+        "Surveying and Levelling": {
             "topics": [
-                "Basic principles of oscillator",
-                "RC, LC and crystal oscillators circuits",
-                "Waveform generators",
+                "Fundamentals of surveying",
+                "Measurements: linear distance, vertical distance, angle and directions",
+                "Levelling, topographic survey (principles and applications)",
+                "Simple circular curves",
+                "Principles and applications of GPS/GIS",
             ]
         },
-        "Amplifiers": {
+        "Estimating, Costing, and Valuation": {
             "topics": [
-                "Classification of output stages: Class A, Class B, Class AB",
-                "Biasing the Class AB stage",
-                "Power BJTs + Transformer-coupled push-pull stages",
-                "Tuned amplifiers + op-amps",
-            ]
-        },
-    },
-    "Digital Logic and Microprocessor (AExE02)": {
-        "Digital Logic": {
-            "topics": [
-                "Number systems + logic levels + logic gates",
-                "Boolean algebra",
-                "Sum-of-Products method + Product-of-Sums method",
-                "Truth Table to Karnaugh Map",
-            ]
-        },
-        "Combinational and Arithmetic Circuits": {
-            "topics": [
-                "Multiplexers + Demultiplexers + Decoder + Encoder",
-                "Binary addition + Binary subtraction",
-                "Operations on unsigned and signed binary numbers",
-            ]
-        },
-        "Sequential Logic Circuit": {
-            "topics": [
-                "RS Flip-Flops + Gated Flip-Flops + Edge Triggered Flip-Flops + Master-Slave Flip-Flops",
-                "Types of registers",
-                "Applications of shift registers",
-                "Asynchronous counters + Synchronous counters",
-            ]
-        },
-        "Microprocessor": {
-            "topics": [
-                "Internal architecture and features of microprocessor",
-                "Assembly language programming",
-            ]
-        },
-        "Microprocessor System": {
-            "topics": [
-                "Memory device classification and hierarchy",
-                "Interfacing I/O and memory + parallel interface",
-                "Introduction to programmable peripheral interface (PPI)",
-                "Serial interface + synchronous and asynchronous transmission + serial interface standards",
-                "Introduction to Direct Memory Access (DMA) and DMA controllers",
-            ]
-        },
-        "Interrupt Operations": {
-            "topics": ["Interrupt + Interrupt Service Routine", "Interrupt processing"]
-        },
-    },
-    "Programming Language and Its Applications (ACtE03)": {
-        "Introduction to C Programming": {
-            "topics": [
-                "C tokens + operators + formatted/unformatted input/output",
-                "Control statements + looping",
-                "User-defined functions + recursive functions",
-                "Array (1-D, 2-D, multi-dimensional) + string manipulations",
-            ]
-        },
-        "Pointers, Structure and Data Files in C Programming": {
-            "topics": [
-                "Pointer arithmetic + pointer and array + passing pointer to function",
-                "Structure vs union + array of structure + passing structure to function + structure and pointer",
-                "Input/output operations on files",
-                "Sequential and random access to file",
-            ]
-        },
-        "C++ Language Constructs with Objects and Classes": {
-            "topics": [
-                "Namespace + function overloading + inline functions + default argument",
-                "Pass/return by reference + class and object introduction + access specifiers",
-                "Objects and member access + defining member function + constructor and its types + destructor",
-                "Dynamic memory allocation for objects + object array + this pointer + static data member + static function",
-                "Constant member functions + constant objects + friend function + friend classes",
-            ]
-        },
-        "Features of Object-Oriented Programming": {
-            "topics": [
-                "Operator overloading (unary, binary) + data conversion",
-                "Inheritance (single, multiple, multilevel, hybrid, multipath)",
-                "Constructor/destructor in single/multilevel inheritance",
-            ]
-        },
-        "Pure Virtual Function and File Handling": {
-            "topics": [
-                "Virtual function + dynamic binding",
-                "Defining, opening, and closing a file + input/output operations on files",
-                "Error handling during input/output operations",
-                "Stream class hierarchy for console input/output",
-                "Unformatted/Formatted input/output with ios member functions + flags + formatting with manipulators",
-            ]
-        },
-        "Generic Programming and Exception Handling": {
-            "topics": [
-                "Function template + overloading function template + class template",
-                "Standard Template Library (containers, algorithms, iterators)",
-                "Exception handling constructs (try, catch, throw) + multiple exception handling",
-                "Rethrowing exception + catching all exceptions + exception with arguments",
-                "Exception specification for function + handling uncaught and unexpected exceptions",
+                "Types of estimate",
+                "Methods of estimating",
+                "Rate analysis",
+                "Specifications: purpose, importance, types",
+                "Valuation",
             ]
         },
     },
-    "Computer Organization and Embedded System (ACtE04)": {
-        "Control and Central Processing Units": {
+    "Soil Mechanics and Foundation Engineering (ACiE02)": {
+        "Soil Properties and Laboratory Tests": {
             "topics": [
-                "Control memory + addressing sequencing + computer configuration",
-                "Microinstruction format + design of control unit",
-                "CPU structure and function + arithmetic and logic unit",
-                "Instruction formats + addressing modes + data transfer and manipulation",
-                "RISC and CISC pipelining + parallel processing",
+                "Tests for strength, permeability, compressibility, phase relationships",
+                "Determination of index and engineering properties of soils",
+                "Soil classification: descriptive, textural, ISI, MIT, USCS",
+                "Boring log interpretation",
+                "Sieve analysis and interpretation of results",
+                "Determination of Atterberg limits of soils",
             ]
         },
-        "Computer Arithmetic and Memory System": {
+        "Stresses on Soil and Seepage": {
             "topics": [
-                "Arithmetic and logical operations",
-                "Memory hierarchy + internal and external memory",
-                "Cache memory principles + elements of cache design",
-                "Cache size + mapping function + replacement algorithm + write policy",
-                "Memory write ability + storage permanence + composing memory",
+                "Effective stress: factors affecting effective stress, capillary rise, quicksand conditions",
+                "Seepage analysis: seepage pressure, flow nets and applications",
+                "Soil compressibility: various indices",
+                "Compaction: definition, affecting factors",
             ]
         },
-        "Input-Output Organization and Multiprocessor": {
+        "Shear Strength of Soil and Stability of Slopes": {
             "topics": [
-                "Peripheral devices + I/O modules + input-output interface",
-                "Modes of transfer + direct memory access",
-                "Characteristics of multiprocessors + interconnection structure",
-                "Inter-processor communication and synchronization",
+                "Concept of shear strength, principal planes and principal stresses",
+                "Mohr-Coulomb theory of shear strength",
+                "Calculation of normal and shear stresses at different planes",
+                "Relation of principal stress at failure condition",
+                "Types of shear tests",
+                "Stability of slopes",
             ]
         },
-        "Hardware-Software Design Issues on Embedded System": {
+        "Soil Exploration, Earth Pressure, and Retaining Structures": {
             "topics": [
-                "Embedded systems overview + classification of embedded systems",
-                "Custom single-purpose processor design + optimizing custom single-purpose processors",
-                "Basic architecture + operation + programmer's view",
-                "Development environment",
-                "Application-specific instruction-set processors",
+                "Soil exploration: methods, planning, soil sampling, samplers, field tests, site investigation reports",
+                "Earth pressure theories",
+                "Stability analysis of retaining walls",
+                "Techniques to increase stability of retaining walls",
             ]
         },
-        "Real-Time Operating and Control System": {
+        "Fundamentals of Foundation": {
             "topics": [
-                "Operating system basics + task + process + threads",
-                "Multiprocessing + multitasking",
-                "Task scheduling + task synchronization",
-                "Device drivers",
-                "Open-loop and close-loop control system overview + control",
+                "Definition of foundation",
+                "Types of foundation: shallow and deep",
+                "Functions of foundation",
+                "Factors affecting foundation",
+                "Site investigation for foundation",
+                "Concept of spread and mat foundation",
             ]
         },
-        "Hardware Descriptions Language and IC Technology": {
+        "Bearing Capacity and Foundation Settlements": {
             "topics": [
-                "VHDL overview + overflow and data representation using VHDL",
-                "Design of combinational and sequential logic using VHDL",
-                "Pipelining using VHDL",
-            ]
-        },
-    },
-    "Concept of Computer Network and Network Security System (ACtE05)": {
-        "Introduction to Computer Networks and Physical Layer": {
-            "topics": [
-                "Networking model + protocols and standards",
-                "OSI model + TCP/IP model",
-                "Networking devices (hubs, bridges, switches, routers)",
-                "Transmission media",
-            ]
-        },
-        "Data Link Layer": {
-            "topics": [
-                "Services + error detection and corrections + flow control",
-                "Data link protocol + multiple access protocols",
-                "LAN addressing + ARP (Address Resolution Protocol)",
-                "Ethernet, IEEE 802.3 (Ethernet) + 802.4 (Token Bus) + 802.5 (Token Ring)",
-                "CSMA/CD + wireless LANs + PPP (Point to Point Protocol) + wide area protocols",
-            ]
-        },
-        "Network Layer": {
-            "topics": [
-                "Addressing (Internet address + classful address) + subnetting",
-                "Routing protocols (RIP, OSPF, BGP, Unicast, Multicast)",
-                "Routing algorithms (shortest path algorithm, flooding, distance vector routing, link state routing)",
-                "ARP, RARP, IP, ICMP",
-                "IPv6 (Packet formats, extension headers, transition from IPv4 to IPv6, multicasting)",
-            ]
-        },
-        "Transport Layer": {
-            "topics": [
-                "Transport service + transport protocols",
-                "Port and socket + connection establishment and release",
-                "Flow control + buffering + multiplexing + de-multiplexing",
-                "Congestion control algorithm",
-            ]
-        },
-        "Application Layer": {
-            "topics": [
-                "Web (HTTP & HTTPS) + file transfer (FTP, PuTTY, Win SCP)",
-                "Electronic mail + DNS + P2P applications",
-                "Socket programming + application server concept",
-                "Traffic analyzer concept (MRTG, PRTG, SNMP, packet tracer, Wireshark)",
-            ]
-        },
-        "Network Security": {
-            "topics": [
-                "Types of computer security + types of security attacks",
-                "Principles of cryptography + RSA algorithm + digital signatures",
-                "Securing email (PGP) + securing TCP connections (SSL)",
-                "Network layer security (IPsec, VPN) + securing wireless LANs (WEP)",
-                "Firewalls",
+                "Bearing capacity: types, effects of various factors",
+                "Modes of foundation failure",
+                "Terzaghi’s general bearing capacity theory",
+                "Ultimate bearing capacity of cohesion-less and cohesive soils",
+                "Consolidation: concept, types, tests",
+                "Settlement: types, nature, effects, and calculations",
             ]
         },
     },
-    "Theory of Computation and Computer Graphics (ACtE06)": {
-        "Introduction to Finite Automata": {
+    "Basic Water Resources Engineering (ACiE03)": {
+        "Fluids and Their Properties": {
             "topics": [
-                "Finite automata + finite state machine",
-                "Equivalence of DFA and NDFA",
-                "Minimization of finite state machines",
-                "Regular expressions + equivalence of regular expressions and finite automata",
-                "Pumping lemma for regular language",
+                "Types of fluids",
+                "Fluid properties: mass density, specific weight, specific gravity, specific volume, viscosity, compressibility, capillarity, surface tension, cavitation, vapour pressure",
             ]
         },
-        "Introduction to Context Free Language": {
+        "Hydrostatics": {
             "topics": [
-                "Context free grammar (CFG) + derivative trees (bottom-up + top-down approach)",
-                "Parse tree + construction + ambiguous grammar",
-                "Chomsky Normal Form (CNF) + Greibach Normal Form (GNF) + Backus-Naur Form (BNF)",
-                "Push down automata + equivalence of context free language and PDA",
-                "Pumping lemma for context free language + properties of context free language",
+                "Pressure and head",
+                "Pascal’s law",
+                "Pressure-depth relationship",
+                "Manometers",
+                "Pressure force and center of pressure on submerged bodies: plane and curved surfaces, practical applications",
+                "Pressure diagrams",
+                "Buoyancy",
+                "Stability of floating/submerged bodies",
             ]
         },
-        "Turing Machine": {
+        "Hydro-kinematics and Hydro-dynamics": {
             "topics": [
-                "Introduction to Turing machines (TM) + notations of Turing machine",
-                "Turing machine as a language recognizer + computing function",
-                "Turing machine with multiple tracks + tapes + non-deterministic Turing machines",
-                "Universal Turing machine + Church-Turing thesis",
-                "Computational complexity + time and space complexity + intractability + reducibility",
+                "Classification of fluid flow",
+                "Conservation of mass (continuity equation) and momentum equations and their applications",
+                "Bernoulli’s equation and its application",
+                "Flow measurement",
             ]
         },
-        "Introduction to Computer Graphics": {
+        "Pipe Flow": {
             "topics": [
-                "Overview of computer graphics",
-                "Graphics hardware (display technology, architecture of raster-scan + vector displays)",
-                "Display processors + output and input devices",
-                "Graphics software + software standards",
+                "Types of pipe flow",
+                "Governing equations",
+                "Major and minor head losses",
+                "Hydraulic Grade Line (HGL) and Total Energy Line (TEL)",
+                "Pipe design",
+                "Pipe network problems",
+                "Unsteady flow in pipes and relief devices",
             ]
         },
-        "Two-Dimensional Transformation": {
+        "Open Channel Flow": {
             "topics": [
-                "2D translation + rotation + scaling + reflection + shear transformation",
-                "2D composite transformation",
-                "2D viewing pipeline",
-                "World to screen viewing transformation + clipping (Cohen Sutherland, Liang-Barsky)",
+                "Geometrical properties of open channels",
+                "Types of flows",
+                "Energy and momentum principles: Specific Energy and Specific Force",
+                "Types of gradually varied flow profiles",
+                "Hydraulic jump: types, theory for horizontal and rectangular",
+                "Flow in mobile boundary channels: design principles/approaches, inception motion condition, Shield diagram",
             ]
         },
-        "Three-Dimensional Transformation": {
+        "Hydrology": {
             "topics": [
-                "3D translation + rotation + scaling + reflection + shear transformation",
-                "3D composite transformation",
-                "3D viewing pipeline",
-                "Projection concepts (orthographic + parallel + perspective projection)",
-            ]
-        },
-    },
-    "Data Structures and Algorithm, Database System and Operating System (ACtE07)": {
-        "Introduction to Data Structure, List, Linked Lists and Trees": {
-            "topics": [
-                "Data types, data structures, abstract data types + time and space analysis (Big O, Omega, Theta notations)",
-                "Linear data structure (stack + queue implementation), stack application: infix to postfix conversion + evaluation of postfix expression",
-                "Array implementation of lists + static and dynamic list structure",
-                "Dynamic implementation of linked list (singly linked list, doubly linked list, circular linked list), basic operations on linked list",
-                "Concept of tree + binary tree operations (search, insertion, deletion), tree traversals (pre-order, post-order, in-order), AVL balanced trees",
-            ]
-        },
-        "Sorting, Searching, and Graphs": {
-            "topics": [
-                "Types of sorting (internal + external), insertion sort, selection sort, merge sort, radix sort, shell sort, heap sort",
-                "Efficiency of sorting (Big O notation)",
-                "Search techniques (sequential search, binary search, tree search), general search tree",
-                "Hashing (hash function + hash tables, collision resolution technique)",
-                "Graphs (undirected + directed), depth-first traversal, breadth-first traversal, minimum spanning trees, shortest-path algorithms (Dijkstra, greedy algorithm)",
-            ]
-        },
-        "Introduction to Data Models, Normalization, and SQL": {
-            "topics": [
-                "Data abstraction + independence, schema + instances, ER model, attributes + keys",
-                "Normal forms (1st, 2nd, 3rd, BCNF), functional dependencies, integrity + domain constraints",
-                "DDL + DML commands, relational algebra, query optimization, query decomposition",
-                "Query cost estimation + evaluation of expressions",
-            ]
-        },
-        "Transaction Processing, Concurrency Control and Crash Recovery": {
-            "topics": [
-                "ACID properties + concurrent executions, serializability concept",
-                "Lock-based protocols + deadlock handling + prevention",
-                "Failure classification + recovery and atomicity",
-                "Log-based recovery",
-            ]
-        },
-        "Introduction to Operating System and Process Management": {
-            "topics": [
-                "Evolution + types of operating systems, OS components, structure + services",
-                "Introduction to process, process states, control, threads, scheduling types",
-                "Principles of concurrency, critical region, race condition, mutual exclusion, semaphores, mutex, message passing, monitors",
-                "Classical problems of synchronization",
-            ]
-        },
-        "Memory Management, File Systems and System Administration": {
-            "topics": [
-                "Memory address + swapping, free memory space management, virtual memory management, demand paging",
-                "Page replacement algorithms",
-                "File system implementation, mapping file blocks on disk platter, fragmentation impact",
-                "User account management + system administration tasks",
+                "Hydrologic cycle and water balance components",
+                "Flow measurement and rating curves",
+                "Hydrograph analysis and synthetic unit hydrographs",
+                "Rainfall-runoff analysis",
+                "Flood hydrology: flood frequency analysis and design flood",
+                "Groundwater hydrology",
             ]
         },
     },
-    "Software Engineering and Object-Oriented Analysis & Design (ACtE08)": {
-        "Software Process and Requirements": {
+    "Structural Mechanics (ACiE04)": {
+        "Shear Forces and Bending Moments": {
             "topics": [
-                "Software characteristics + quality attributes, software process models (Agile, V-Model, Iterative, Prototype, Big Bang)",
-                "Computer-aided software engineering, functional + non-functional requirements",
-                "User + system requirements, interface specification, software requirements documents",
-                "Requirements elicitation + analysis, validation + management",
+                "Axial forces",
+                "Shear forces",
+                "Bending moments",
+                "Loads and load superposition",
+                "Relationship and diagram interpretation (AF, SF, BM)",
             ]
         },
-        "Software Design": {
+        "Stress and Strain Analysis": {
             "topics": [
-                "Design process + concepts, design modes + heuristics, architectural design decisions",
-                "System organization + modular decomposition styles, control styles",
-                "Reference architectures + multiprocessor architecture",
-                "Client-server + distributed object architectures, inter-organizational distributed computing",
-                "Real-time software design + component-based software engineering",
+                "Normal and shear stresses",
+                "Principal stresses and principal planes",
+                "Maximum shear stress and corresponding plane",
+                "Stress-strain curves",
+                "Torsion",
             ]
         },
-        "Software Testing, Cost Estimation, Quality Management, and Configuration Management": {
+        "Theory of Flexure and Columns": {
             "topics": [
-                "Unit, integration, system, component + acceptance testing, test case design + automation",
-                "Metrics for testing + algorithmic cost modeling",
-                "Project duration + staffing, software quality assurance + formal technical reviews",
-                "Statistical software quality assurance + a framework for software metrics",
-                "Configuration management planning + change management, version + release management, CASE tools",
+                "Co-planar and pure bending",
+                "Elastic curve",
+                "Angle of rotation",
+                "Radius of curvature and flexural stiffness",
+                "Deflection",
+                "Bending stress",
+                "Euler’s formula for long column",
             ]
         },
-        "Object-Oriented Fundamentals and Analysis": {
+        "Determinate Structures-1": {
             "topics": [
-                "Defining models + requirement process, use cases + object-oriented development cycle",
-                "Unified Modeling Language, building conceptual model + adding associations and attributes",
-                "Representation of system behavior",
+                "Degree of determinacy",
+                "Energy Methods",
+                "Virtual Work Method",
+                "Deflection of beams and portal frame",
             ]
         },
-        "Object-Oriented Design": {
+        "Determinate Structures-2": {
             "topics": [
-                "Analysis to design, describing + elaborating use cases",
-                "Collaboration diagrams, objects + patterns, determining visibility",
-                "Class diagrams",
+                "Influence lines for simple structures with point loads and UDL",
+                "Analysis of two-hinged arches",
             ]
         },
-        "Object-Oriented Design Implementation": {
+        "Indeterminate Structures": {
             "topics": [
-                "Programming + development process, mapping design to code",
-                "Creating class definitions from design class diagrams",
-                "Creating methods from collaboration diagrams, updating class definitions",
-                "Classes in code + exception and error handling",
+                "Flexibility Method",
+                "Two-hinged parabolic arches",
+                "Slope Deflection Method",
+                "Moment Distribution Method",
+                "Stiffness Method",
+                "Influence Lines for continuous beams",
+                "Elementary Plastic Analysis",
             ]
         },
     },
-    "Artificial Intelligence and Neural Networks (ACtE09)": {
-        "Introduction to AI and Intelligent Agents": {
+    "Design of Structures (ACiE05)": {
+        "Loads and Load Combinations": {
             "topics": [
-                "Concept of Artificial Intelligence + AI perspectives, history of AI, applications of AI, foundations of AI",
-                "Introduction to agents, structure of intelligent agents, properties of intelligent agents",
-                "PEAS description of agents, types of agents (simple reflexive, model based, goal based, utility based)",
-                "Environment types (deterministic, stochastic, static, dynamic, observable, semi-observable, single agent, multi-agent)",
+                "Dead Load",
+                "Imposed Load",
+                "Wind Load",
+                "Snow Load",
+                "Earthquake Load",
             ]
         },
-        "Problem Solving and Searching Techniques": {
+        "Concrete Technology": {
             "topics": [
-                "Definition + problem as state space search, problem formulation, well-defined problems, constraint satisfaction problem",
-                "Uninformed search techniques (depth first search, breadth first search, depth limited search, iterative deepening search, bidirectional search)",
-                "Informed search techniques (greedy best first search, A* search, hill climbing, simulated annealing)",
-                "Game playing + adversarial search techniques, mini-max search, alpha-beta pruning",
+                "Materials",
+                "Properties",
+                "Mix Design",
+                "Testing",
+                "Quality Control",
+                "Codes (IS and NS)",
             ]
         },
-        "Knowledge Representation": {
+        "RCC Structures-1": {
             "topics": [
-                "Knowledge representations + mappings, approaches to knowledge representation, issues in knowledge representation",
-                "Semantic nets, frames, propositional logic (syntax, semantics, formal logic-connectives, tautology, validity, well-formed formula, inference using resolution)",
-                "Predicate logic (FOPL, syntax, semantics, quantification, rules of inference, unification, resolution refutation system)",
-                "Bayes' rule + its use, Bayesian networks + reasoning in belief networks",
+                "Working stress and limit state methods",
+                "Design of beams and slabs",
+                "Analysis of RC beams and slabs in bending, shear, deflection, bond and end anchorage",
+                "RCC",
+                "NS & IS codes",
             ]
         },
-        "Expert Systems and Natural Language Processing": {
+        "RCC Structures-2": {
             "topics": [
-                "Expert systems, architecture of an expert system, knowledge acquisition",
-                "Declarative knowledge vs procedural knowledge, development of expert systems",
-                "Natural language processing terminology, natural language understanding + generation",
-                "Steps of natural language processing, applications of NLP, NLP challenges",
-                "Machine vision concepts + stages, robotics",
+                "Design of columns and isolated/combined footings",
+                "Pre-stressed concrete",
+                "NS & IS codes",
             ]
         },
-        "Machine Learning": {
+        "Steel Structures": {
             "topics": [
-                "Introduction to machine learning, concepts of learning",
-                "Supervised, unsupervised, and reinforcement learning, inductive learning (decision tree)",
-                "Statistical-based learning (Naive Bayes model), fuzzy learning + inference system",
-                "Genetic algorithm (operators, encoding, selection algorithms, fitness function, parameters)",
+                "Standard and built-up sections",
+                "Design of bolted and welded connections",
+                "Design of simple elements such as ties, struts, axially loaded columns, and column bases",
+                "NS and IS codes",
             ]
         },
-        "Neural Networks": {
+        "Timber and Masonry Structures": {
             "topics": [
-                "Biological neural networks vs artificial neural networks (ANN)",
-                "McCulloch-Pitts neuron, mathematical model of ANN, activation functions",
-                "Architectures of neural networks, perceptron, learning rate",
-                "Gradient descent, delta rule, Hebbian learning, Adaline network",
-                "Multilayer perceptron neural networks, backpropagation algorithm, Hopfield neural network",
+                "Design principles of timber beams and columns",
+                "Design of masonry structures",
+                "Mandatory rules of thumb",
+                "Nepal Building Code (NBC)",
+                "Properties of masonry structures",
+                "Failure modes of masonry structure",
+                "Mud mortar, lime mortar and cement mortar and its properties",
+            ]
+        },
+    },
+    "Water Supply, Sanitation and Environment (ACiE06)": {
+        "Water Sources, Water Quality and Water Demand": {
+            "topics": [
+                "Sources of water (surface and groundwater) and their selection",
+                "Impurities in water (suspended, colloidal, dissolved)",
+                "Hardness and alkalinity",
+                "Living organisms in water",
+                "Water-related diseases and prevention measures",
+                "Drinking water quality standards",
+                "Water demand estimation",
+            ]
+        },
+        "Intake and Distribution Systems": {
+            "topics": [
+                "Types of intakes",
+                "Factors affecting the selection of intake location",
+                "Types and purposes of pipe materials, joints, valves, and fittings",
+                "Break pressure tanks",
+                "Service reservoirs and capacity determination",
+                "Design of branch and looped water distribution systems",
+            ]
+        },
+        "Water Treatment Process and Technologies": {
+            "topics": [
+                "Various treatment processes and their purposes",
+                "Screening",
+                "Plain sedimentation",
+                "Sedimentation with coagulation",
+                "Flocculation",
+                "Filtration",
+                "Disinfection",
+                "Softening",
+                "Miscellaneous treatments (aeration, removal of iron and manganese, removal of color, odor, taste)",
+            ]
+        },
+        "Design and Construction of Sewers": {
+            "topics": [
+                "Estimation of wastewater quantity",
+                "Sewerage system and types",
+                "Design criteria of sewers",
+                "Shapes of sewers",
+                "Sewer materials",
+                "Design of sewers for separate and combined systems",
+                "Construction of sewers and sewer appurtenances",
+            ]
+        },
+        "Treatment and Disposal of Wastewater": {
+            "topics": [
+                "Characteristics and examination of sewage",
+                "Decomposition of wastewater",
+                "BOD and COD",
+                "Primary treatment processes and design of grit chamber",
+                "Secondary or biological treatment process",
+                "Sewage filtration",
+                "Activated sludge process",
+                "Oxidation ponds",
+                "Wastewater disposal by dilution (oxygen sag curve, Streeter Phelp’s equation)",
+                "Wastewater disposal by land treatment",
+                "Sludge and solid waste disposal methods",
+                "Latrine and septic tank",
+            ]
+        },
+        "Concept of Environmental Assessment": {
+            "topics": [
+                "BES, IEE, EIA",
+                "Government’s act, rules, regulations, and procedures for BES/IEE/EIA",
+                "Types of disaster and its mitigation",
+            ]
+        },
+    },
+    "Irrigation and Drainage (ACiE07)": {
+        "Water Demand Estimation": {
+            "topics": [
+                "Crop water and irrigation water requirements",
+                "Water availability for irrigation",
+                "Command areas",
+                "Irrigation intensity",
+                "Duty, delta, and their relationship",
+                "Water losses and irrigation efficiencies",
+                "Effective rainfall",
+                "Soil-moisture-irrigation relationship",
+                "Depth and frequency of irrigation",
+                "Design discharge for canals",
+            ]
+        },
+        "Design of Canals": {
+            "topics": [
+                "Canal types, network, and alignment",
+                "Tractive force approach of canal design",
+                "Design of stable canals",
+                "Alluvial canals (Kennedy’s and Lacey’s theory)",
+                "Lined canals",
+            ]
+        },
+        "Diversion Headworks": {
+            "topics": [
+                "Components of headwork",
+                "Seepage theories and their applications (Bligh’s, Lane’s, Khosla’s)",
+                "Design of silt control structures (excluder, ejector, and settling basins)",
+                "Design of weir/barrage (crest, length, and thickness of impervious floor)",
+                "Design of energy dissipaters",
+            ]
+        },
+        "River Training Works": {
+            "topics": [
+                "River stages and need of river training",
+                "Design of river training works (guide bund and launching aprons, levees, and spurs)",
+                "Watershed management",
+            ]
+        },
+        "Regulating and Cross-Drainage Structures": {
+            "topics": [
+                "Functions of various types of regulators",
+                "Design of regulators and escapes (crest, length, and thickness of impervious floor)",
+                "Design of pipe outlet (free and submerged)",
+                "Design of vertical drop (crest, length, and thickness of impervious floor)",
+                "Design of cross-drainage structures",
+            ]
+        },
+        "Water Logging and Drainage": {
+            "topics": [
+                "Causes, effects, and preventive measures",
+                "Design of surface and sub-surface drainage systems",
+            ]
+        },
+    },
+    "Hydropower (ACiE08)": {
+        "Planning of Hydropower Projects": {
+            "topics": [
+                "Power potential (gross, technical, economic) of Nepal and the world",
+                "Stages of hydropower development",
+                "Hydropower development in Nepal (history, policy, acts & regulation)",
+            ]
+        },
+        "Power and Energy Potential Study": {
+            "topics": [
+                "Power and energy potentials",
+                "Methods of fixing installed capacity of a plant",
+                "Types of hydropower plants on various bases",
+                "Components of different types of hydropower projects",
+                "Reservoirs and their regulation",
+            ]
+        },
+        "Headworks of Storage Plants": {
+            "topics": [
+                "Components of a typical storage plant",
+                "Dams (types, functions, selection, design, failure modes and remedies)",
+                "Stability analysis of gravity dam",
+                "Seepage control and foundation treatment in dams",
+                "Design of intake, spillway, and energy dissipaters",
+                "Gates (types and locations)",
+            ]
+        },
+        "Headworks of Run-of-River (ROR) Plants": {
+            "topics": [
+                "Components of a typical ROR plant",
+                "Design of intake",
+                "Methods of bed and suspended load handling",
+                "Design of settling basin (practice and concentration approach)",
+                "Estimation of sediment volume in settling basin",
+                "Flushing of deposited sediment",
+                "Estimation of flushing frequency for sediments",
+            ]
+        },
+        "Water Conveyance Structures": {
+            "topics": [
+                "Hydraulic tunnels, cross-sections, and hydraulic design (velocity and sizing)",
+                "Tunnel lining",
+                "Design of forebay and surge tanks",
+                "Design of penstocks and pressure shaft",
+                "Hydraulic transients (water hammer)",
+            ]
+        },
+        "Hydro-electric Machines and Powerhouse": {
+            "topics": [
+                "Hydro-mechanical equipment and their functions",
+                "Types of turbines and performance characteristics",
+                "Selection of turbine and their specific speed",
+                "Preliminary design of Francis and Pelton turbines",
+                "Scroll case and draft tubes",
+                "Generators (types, rating)",
+                "Governors",
+                "Pumps and their performance characteristics",
+                "Powerhouse (types, general arrangements, dimensions)",
+            ]
+        },
+    },
+    "Transportation (ACiE09)": {
+        "Highway Planning and Survey": {
+            "topics": [
+                "Modes of transport",
+                "History of road development in Nepal",
+                "Classification of roads",
+                "Road survey",
+                "Highway alignment and controlling factors",
+                "Evaluating alternate alignments",
+                "Road Standards of Nepal",
+            ]
+        },
+        "Geometric Design of Highway": {
+            "topics": [
+                "Basic design control and criteria",
+                "Elements of highway cross-section",
+                "Highway curves",
+                "Super elevation",
+                "Average and ruling gradients",
+                "Stopping sight distance",
+                "Design considerations for horizontal and vertical alignments",
+                "Extra widening and set back distance",
+                "Design of road drainage structures",
+                "Design considerations for hill roads",
+            ]
+        },
+        "Highway Materials": {
+            "topics": [
+                "Types of aggregates and tests on their gradation, strength, durability",
+                "Binding materials and their tests",
+                "Design of asphalt mixes",
+                "Evaluation of subgrade soil",
+            ]
+        },
+        "Traffic Engineering and Safety": {
+            "topics": [
+                "Impact of human and vehicular characteristics on traffic planning",
+                "Traffic operations and regulations",
+                "Traffic control devices",
+                "Traffic studies (volume, speed, O&D, traffic capacity, traffic flow characteristics, parking, accident, flow)",
+                "Road intersections (types, configurations, design)",
+                "Traffic lights",
+                "Factors influencing night visibility",
+                "Road safety measures",
+            ]
+        },
+        "Road Pavement": {
+            "topics": [
+                "Different types of pavement",
+                "Design methods for flexible and rigid pavements (DOR Guidelines)",
+                "Loads and other factors controlling pavement design",
+                "Stress due to load and temperature",
+            ]
+        },
+        "Road Construction & Maintenance": {
+            "topics": [
+                "Activities, techniques, tools, equipment and plants used in road construction",
+                "Preparation of road subgrade",
+                "Field compaction control and soil stabilization",
+                "Construction of asphalt concrete layers",
+                "Construction procedure for penetration macadam, bituminous bound macadam, and plain cement concrete pavements",
+                "Road maintenance, repair and rehabilitation",
             ]
         },
     },
     "Project Planning, Design and Implementation (AALL10)": {
-        "Engineering Drawings and Its Concepts": {
+        "Engineering Drawings and its Concepts": {
             "topics": [
                 "Fundamentals of standard drawing sheets",
-                "Dimensions, scale, line diagram",
-                "Orthographic projection, isometric projection/view",
-                "Pictorial views, sectional drawing",
+                "Dimensions",
+                "Scale",
+                "Line diagram",
+                "Orthographic projection",
+                "Isometric projection/view",
+                "Pictorial views",
+                "Sectional drawing",
             ]
         },
         "Engineering Economics": {
             "topics": [
                 "Understanding of project cash flow",
-                "Discount rate, interest and time value of money",
+                "Discount rate",
+                "Interest and time value of money",
                 "Basic methodologies for engineering economics analysis (Discounted Payback Period, NPV, IRR & MARR)",
                 "Comparison of alternatives",
                 "Depreciation system and taxation system in Nepal",
@@ -498,15 +577,16 @@ course_structure = {
                 "Project life cycle phases",
                 "Project planning process",
                 "Project scheduling (bar chart, CPM, PERT)",
-                "Resources leveling and smoothing",
-                "Monitoring, evaluation, and controlling",
+                "Resources levelling and smoothing",
+                "Monitoring/evaluation/controlling",
             ]
         },
         "Project Management": {
             "topics": [
                 "Information system",
                 "Project risk analysis and management",
-                "Project financing, tender and its process",
+                "Project financing",
+                "Tender and its process",
                 "Contract management",
             ]
         },
@@ -517,7 +597,7 @@ course_structure = {
                 "Regulatory environment",
                 "Contemporary issues/problems in engineering",
                 "Occupational health and safety",
-                "Roles and responsibilities of Nepal Engineers Association (NEA)",
+                "Roles/responsibilities of Nepal Engineers Association (NEA)",
             ]
         },
         "Engineering Regulatory Body": {
@@ -696,15 +776,16 @@ def extract_json_from_response(response_text):
             # # Print error for debugging
             # print(f"Error decoding JSON: {e}")
             # print(f"Problematic JSON string: {json_str}")
-            st.error(
-                "There was an error decoding the JSON response. Please generate again."
-            )
-            st.text(f"Error: {e}")
-            st.text(f"JSON string: {json_str}")
+            # st.error(
+            #     "There was an error decoding the JSON response. Please generate again."
+            # )
+            # st.text(f"Error: {e}")
+            # st.text(f"JSON string: {json_str}")
+            pass
     else:
         # print("JSON brace count mismatch or JSON not started properly.")
-        st.error("JSON brace count mismatch or JSON not started properly.")
-        st.text(f"Response text: {response_text}")
+        # st.error("JSON brace count mismatch or JSON not started properly.")
+        # st.text(f"Response text: {response_text}")
         return None
 
 
@@ -712,7 +793,7 @@ create_db()
 
 
 def course_dashboard():
-    st.title("NEC Study Dashboard: COMPUTER ENGINEERING")
+    st.title("NEC Study Dashboard: CIVIL ENGINEERING")
 
     selected_unit = st.sidebar.selectbox(
         "Choose a Unit", ["Select a Unit"] + list(course_structure.keys())
