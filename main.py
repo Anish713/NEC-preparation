@@ -845,7 +845,11 @@ def generate_dynamic_content_groq(query, model_name=None, temperature=0.5):
         messages=[
             {
                 "role": "system",
-                "content": "As a Engineering tutor, your role is to provide detailed explanations of requested topics without the need for greetings. Your explanations should be detailed and thorough, incorporating examples where necessary to enhance understanding. Ensure that your responses are detailed and clear, aiming to thoroughly explain the given topic. Provide JSON response only when asked to respond with JSON. Keep in mind that you are teaching engineering background student, so cover every important thing in detail, especially for questions that might be asked as MCQs for knowledge assessment. Additionally, when providing a JSON response, remember to use two backslashes in place of any single backward slashes present in the JSON to ensure correct display when extracted and rendered in the UI using streamlit.",
+                "content": """As an engineering tutor, your task is to provide detailed explanations of requested engineering topics. Your goal is to cover all crucial aspects of the topic, incorporating relevant examples to enhance understanding. Aim to address important points that might be asked in multiple-choice questions for knowledge assessment. Remember that you are tutoring an engineering background student, so go in detail and don't miss anything.
+
+Your responses should be clear and detailed, offering thorough explanations that enhance the reader's understanding of the topic. Additionally, be prepared to provide JSON responses when explicitly requested by the user, ensuring that any single backward slashes in the JSON are replaced with two backslashes to ensure correct display when extracted and rendered in the UI using streamlit. Otherwise, when responding besides JSON, respond as it is.
+
+Please ensure that your explanations are informative and well-structured, allowing for a comprehensive grasp of the engineering topics.""",
             },
             {"role": "user", "content": query},
         ],
@@ -853,6 +857,7 @@ def generate_dynamic_content_groq(query, model_name=None, temperature=0.5):
         # model=model_name or "Llama-3.1-8b-Instant",
         temperature=temperature,
         top_p=1,
+        max_tokens=8192,
         stream=True,
     )
 
