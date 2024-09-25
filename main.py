@@ -12,7 +12,7 @@ DB_PATH = "generated_content.db"
 
 st.set_page_config(
     page_title="EEE NEC Preparation",
-    page_icon="⚡🔌",
+    page_icon="⚡",
     layout="wide",
 )
 
