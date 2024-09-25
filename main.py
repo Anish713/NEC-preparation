@@ -11,590 +11,510 @@ from groq import Groq
 DB_PATH = "generated_content.db"
 
 st.set_page_config(
-    page_title="Civil Engineering NEC",
-    page_icon="👷‍♂️",
+    page_title="EEE NEC Preparation",
+    page_icon="⚡🔌",
     layout="wide",
 )
 
-## NEC Syllabus for Civil Engineering
+# NEC syllabus for Electrical and Electronic Engineering (AEEE)
 course_structure = {
-    "Basic Civil Engineering (ACiE01)": {
-        "Engineering Materials": {
+    "Fundamentals of Electrical Components and Circuits (AEEE01)": {
+        "Basic concept": {
             "topics": [
-                "Properties (physical, chemical, mechanical, thermal)",
-                "Types, characteristics, composition, selection, and usage of engineering materials",
-                "Materials: stones, bricks, tiles, cement, lime, timber, metals/alloys, paints/varnishes, asphalt/bitumen/tar",
+                "Ohm´s Law, electric voltage, current, power and energy, conducting and insulating materials",
+                "Series and parallel electric circuits, start-delta and delta-star conversion",
+                "Kirchhoff’s law, linear and non-linear circuits",
+                "Bilateral and unilateral circuits, active and passive circuits",
             ]
         },
-        "Standards (NS & IS) and Tests for Civil Engineering Materials": {
+        "Network theorems": {
             "topics": [
-                "Tests of brick: water absorption and compressive tests",
-                "Tests of cement: consistency, setting time, soundness, compressive strength",
-                "Test of aggregate: bulking of sand",
-                "Test of rebar: tensile test",
+                "Concept of superposition theorem, Thevenin's theorem, Norton’s theorem",
+                "Maximum power transfer theorem, R-L, R-C, R-L-C circuits",
+                "Resonance in AC series and parallel circuits, active and reactive power",
             ]
         },
-        "Building Technology": {
+        "Alternating current fundamentals": {
             "topics": [
-                "Building construction technology: brick and stone masonry, carpentry, painting, plastering, concrete roofing, flooring, damp proof course",
-                "Building by-laws",
+                "Principle of generation of alternating voltages and currents",
+                "Equations and waveforms of AC, average, peak and rms values",
+                "Three phase system",
             ]
         },
-        "Geometric Properties of Sections": {
+        "Electric recruit response (transient analysis)": {
             "topics": [
-                "Axes of symmetry",
-                "Centre of gravity of different sections: built-up plane figures, standard steel sections",
-                "Moment of inertia",
-                "Radius of gyration",
+                "Steady state and transient analysis of R-L, R-C, R-L-C circuits"
             ]
         },
-        "Surveying and Levelling": {
+        "Analysis of one port and two port networks": {
             "topics": [
-                "Fundamentals of surveying",
-                "Measurements: linear distance, vertical distance, angle and directions",
-                "Levelling, topographic survey (principles and applications)",
-                "Simple circular curves",
-                "Principles and applications of GPS/GIS",
+                "Transfer functions, poles and zeros of networks",
+                "Relationship between poles/zeros locations and system response",
+                "One port passive circuits, impedance and admittance functions",
+                "Two-port parameters of networks, definitions of two-port networks",
+                "Short circuit admittance parameters, open circuit impedance parameters, transmission parameters, hybrid parameters, inter-relationship between parameters of two-port network",
             ]
         },
-        "Estimating, Costing, and Valuation": {
+        "Synthesis of one port and two port networks": {
             "topics": [
-                "Types of estimate",
-                "Methods of estimating",
-                "Rate analysis",
-                "Specifications: purpose, importance, types",
-                "Valuation",
+                "Hurwitz polynomials and properties, positive real functions",
+                "Foster and Cauer forms, synthesis of RL, RC and LC networks",
+                "Synthesis of resistively terminated active and passive two ports, ladder networks",
             ]
         },
     },
-    "Soil Mechanics and Foundation Engineering (ACiE02)": {
-        "Soil Properties and Laboratory Tests": {
+    "Fundamentals of Electronic Devices and Circuits (AEEE02)": {
+        "Semiconductor diodes and transistors": {
             "topics": [
-                "Tests for strength, permeability, compressibility, phase relationships",
-                "Determination of index and engineering properties of soils",
-                "Soil classification: descriptive, textural, ISI, MIT, USCS",
-                "Boring log interpretation",
-                "Sieve analysis and interpretation of results",
-                "Determination of Atterberg limits of soils",
+                "Overview of electronic devices: Semiconductor diode, PN junction characteristics",
+                "Ideal and practical diode; I-V characteristics; Forward and reverse bias",
+                "Diode configurations: Series, parallel and hybrid, large signal and small signal model",
+                "Half wave and full wave rectifiers, various types of diodes",
+                "Bipolar Junction Transistor (BJT): PNP and NPN transistors, modes of operation, BJT biasing",
             ]
         },
-        "Stresses on Soil and Seepage": {
+        "JFET and MOSFET": {
             "topics": [
-                "Effective stress: factors affecting effective stress, capillary rise, quicksand conditions",
-                "Seepage analysis: seepage pressure, flow nets and applications",
-                "Soil compressibility: various indices",
-                "Compaction: definition, affecting factors",
+                "Field Effect Transistor (FET) and Junction Field Effect Transistor (JFET) construction",
+                "Basic operation and characteristics of JFET",
+                "Metal Oxide Semiconductor Field Effect Transistor (MOSFET): structure and operation",
+                "Types of MOSFET, current-voltage characteristics, MOSFET as amplifier and switch",
+                "Working principle of CMOS, applications of MOSFET and CMOS",
             ]
         },
-        "Shear Strength of Soil and Stability of Slopes": {
+        "Amplifiers and signal generators": {
             "topics": [
-                "Concept of shear strength, principal planes and principal stresses",
-                "Mohr-Coulomb theory of shear strength",
-                "Calculation of normal and shear stresses at different planes",
-                "Relation of principal stress at failure condition",
-                "Types of shear tests",
-                "Stability of slopes",
+                "Definition of amplification and gain, types of amplifiers",
+                "Design procedure of low frequency amplifiers using BJT and MOSFET",
+                "Power amplifiers: Class A, Class B, Class AB amplifiers",
+                "Basic principles of oscillators: Positive feedback, condition for oscillation",
+                "Waveform generators: Square wave, triangular wave, and sawtooth wave generators",
             ]
         },
-        "Soil Exploration, Earth Pressure, and Retaining Structures": {
+        "Operational amplifier characterization": {
             "topics": [
-                "Soil exploration: methods, planning, soil sampling, samplers, field tests, site investigation reports",
-                "Earth pressure theories",
-                "Stability analysis of retaining walls",
-                "Techniques to increase stability of retaining walls",
+                "Overview of differential amplifier, basic parameters of ideal Op-Amp",
+                "Ideal and practical characteristics of Op-Amp",
+                "Derivation of gain for inverting and non-inverting amplifiers with feedback",
+                "Concept of voltage follower and negative ground",
+                "Op-Amp applications: Integration, differentiation, addition, clipping and comparator circuits",
             ]
         },
-        "Fundamentals of Foundation": {
+        "Nonlinear circuits and active filters": {
             "topics": [
-                "Definition of foundation",
-                "Types of foundation: shallow and deep",
-                "Functions of foundation",
-                "Factors affecting foundation",
-                "Site investigation for foundation",
-                "Concept of spread and mat foundation",
+                "Logarithmic and exponential amplifiers, logarithmic multiplier",
+                "Phase locked loop, voltage to frequency and frequency to voltage conversion",
+                "Characteristics and advantages of active filters",
+                "Active first order filter, high pass and low pass filters",
             ]
         },
-        "Bearing Capacity and Foundation Settlements": {
+        "Logic families and ICs": {
             "topics": [
-                "Bearing capacity: types, effects of various factors",
-                "Modes of foundation failure",
-                "Terzaghi’s general bearing capacity theory",
-                "Ultimate bearing capacity of cohesion-less and cohesive soils",
-                "Consolidation: concept, types, tests",
-                "Settlement: types, nature, effects, and calculations",
+                "Evolution and characteristics of logic families",
+                "Classification of logic families",
+                "Simple circuits for logic gates: DTL, RTL, TTL",
             ]
         },
     },
-    "Basic Water Resources Engineering (ACiE03)": {
-        "Fluids and Their Properties": {
+    "Digital Logic and Microprocessor (AEEE03)": {
+        "Digital logic": {
             "topics": [
-                "Types of fluids",
-                "Fluid properties: mass density, specific weight, specific gravity, specific volume, viscosity, compressibility, capillarity, surface tension, cavitation, vapour pressure",
+                "Number systems, logic levels, logic gates",
+                "Boolean algebra, Sum-of-Products method, Product-of-Sums method",
+                "Truth table to Karnaugh map",
             ]
         },
-        "Hydrostatics": {
+        "Combinational and arithmetic circuits": {
             "topics": [
-                "Pressure and head",
-                "Pascal’s law",
-                "Pressure-depth relationship",
-                "Manometers",
-                "Pressure force and center of pressure on submerged bodies: plane and curved surfaces, practical applications",
-                "Pressure diagrams",
-                "Buoyancy",
-                "Stability of floating/submerged bodies",
+                "Multiplexers and demultiplexers",
+                "Decoder and encoder",
+                "Binary addition and binary subtraction",
+                "Operations on unsigned and signed binary numbers",
             ]
         },
-        "Hydro-kinematics and Hydro-dynamics": {
+        "Sequential logic circuit": {
             "topics": [
-                "Classification of fluid flow",
-                "Conservation of mass (continuity equation) and momentum equations and their applications",
-                "Bernoulli’s equation and its application",
-                "Flow measurement",
+                "RS flip-flops, gated flip-flops, edge triggered flip-flops, master-slave flip-flops",
+                "Types of registers and applications of shift registers",
+                "Asynchronous counters and synchronous counters",
             ]
         },
-        "Pipe Flow": {
+        "Microprocessor": {
             "topics": [
-                "Types of pipe flow",
-                "Governing equations",
-                "Major and minor head losses",
-                "Hydraulic Grade Line (HGL) and Total Energy Line (TEL)",
-                "Pipe design",
-                "Pipe network problems",
-                "Unsteady flow in pipes and relief devices",
+                "Internal architecture and features of microprocessors",
+                "Assembly language programming",
             ]
         },
-        "Open Channel Flow": {
+        "Interfacing (Microprocessor system)": {
             "topics": [
-                "Geometrical properties of open channels",
-                "Types of flows",
-                "Energy and momentum principles: Specific Energy and Specific Force",
-                "Types of gradually varied flow profiles",
-                "Hydraulic jump: types, theory for horizontal and rectangular",
-                "Flow in mobile boundary channels: design principles/approaches, inception motion condition, Shield diagram",
+                "Memory device classification and hierarchy",
+                "Interfacing I/O and memory parallel interface",
+                "Introduction to programmable peripheral interface (PPI)",
+                "Serial interface: Synchronous and asynchronous transmission",
+                "Serial interface standards: RS232, RS423, RS422, USB, introduction to USART, Direct Memory Access (DMA) and DMA controllers",
             ]
         },
-        "Hydrology": {
+        "Computer organization": {
             "topics": [
-                "Hydrologic cycle and water balance components",
-                "Flow measurement and rating curves",
-                "Hydrograph analysis and synthetic unit hydrographs",
-                "Rainfall-runoff analysis",
-                "Flood hydrology: flood frequency analysis and design flood",
-                "Groundwater hydrology",
+                "Control and central processing unit",
+                "Control memory, addressing sequencing",
+                "Computer configuration and microinstruction format",
+                "Design of control unit, CPU structure and function",
+                "Arithmetic and logic unit, instruction formats, addressing modes, data transfer and manipulation, RISC and CISC pipelining and parallel processing",
             ]
         },
     },
-    "Structural Mechanics (ACiE04)": {
-        "Shear Forces and Bending Moments": {
+    "Computer Programming (AEEE04)": {
+        "Introduction to programming": {
             "topics": [
-                "Axial forces",
-                "Shear forces",
-                "Bending moments",
-                "Loads and load superposition",
-                "Relationship and diagram interpretation (AF, SF, BM)",
+                "Tokens, operators, formatted/unformatted input/output",
+                "Structured and object-oriented programming, algorithms and flowcharts",
+                "Data types, variables, declaration, constants (string, numeric, character constant)",
+                "Arithmetic operators, assignment operators, logical and comparison operations",
+                "Input and output statements",
             ]
         },
-        "Stress and Strain Analysis": {
+        "Control statements": {
             "topics": [
-                "Normal and shear stresses",
-                "Principal stresses and principal planes",
-                "Maximum shear stress and corresponding plane",
-                "Stress-strain curves",
-                "Torsion",
+                "If statement, if-else statement, switch statement",
+                "Loop statements: for loop, while loop, do-while loop",
+                "Breaking control statements",
             ]
         },
-        "Theory of Flexure and Columns": {
+        "Functions": {
             "topics": [
-                "Co-planar and pure bending",
-                "Elastic curve",
-                "Angle of rotation",
-                "Radius of curvature and flexural stiffness",
-                "Deflection",
-                "Bending stress",
-                "Euler’s formula for long column",
+                "Defining functions and use of functions",
+                "Function prototypes, passing arguments to functions",
+                "Recursive functions",
             ]
         },
-        "Determinate Structures-1": {
+        "Pointers and data file": {
             "topics": [
-                "Degree of determinacy",
-                "Energy Methods",
-                "Virtual Work Method",
-                "Deflection of beams and portal frame",
+                "Pointer declaration and pointer arithmetic",
+                "Operations on pointers, pointer and array (one-dimensional array)",
+                "Dynamic memory allocation",
             ]
         },
-        "Determinate Structures-2": {
+        "Array and structures": {
             "topics": [
-                "Influence lines for simple structures with point loads and UDL",
-                "Analysis of two-hinged arches",
+                "Defining and processing an array",
+                "Passing array to functions, multidimensional arrays",
+                "Declaration and initialization of structures, array of structures",
+                "Pointer to structures",
             ]
         },
-        "Indeterminate Structures": {
+        "Features of object-oriented programming": {
             "topics": [
-                "Flexibility Method",
-                "Two-hinged parabolic arches",
-                "Slope Deflection Method",
-                "Moment Distribution Method",
-                "Stiffness Method",
-                "Influence Lines for continuous beams",
-                "Elementary Plastic Analysis",
+                "Inline functions, function overloading",
+                "Class and objects, member functions, private member functions",
+                "Initializing an object, static data members, static member functions",
+                "Operator overloading, inheritance, polymorphism",
             ]
         },
     },
-    "Design of Structures (ACiE05)": {
-        "Loads and Load Combinations": {
+    "Measurement, Instrumentation and Control (AEEE05)": {
+        "Measurement and error": {
             "topics": [
-                "Dead Load",
-                "Imposed Load",
-                "Wind Load",
-                "Snow Load",
-                "Earthquake Load",
+                "Static and dynamic errors",
+                "Maxwell bridges, Schering bridge, Wien bridge",
             ]
         },
-        "Concrete Technology": {
+        "Transducers, sensors and signal conditioning": {
             "topics": [
-                "Materials",
-                "Properties",
-                "Mix Design",
-                "Testing",
-                "Quality Control",
-                "Codes (IS and NS)",
+                "Definitions and classifications of transducers",
+                "Transducer selection factors",
+                "Types of transducers: resistive, capacitive, inductive, linear variable differential transformer",
+                "Various sensors: position, proximity, motion, pressure, level, flow, strain gauges, load cells",
+                "Signal conditioning techniques: linearization, filtering, impedance and power matching; DAC and ADC performance parameters",
             ]
         },
-        "RCC Structures-1": {
+        "Electrical measurements and instruments": {
             "topics": [
-                "Working stress and limit state methods",
-                "Design of beams and slabs",
-                "Analysis of RC beams and slabs in bending, shear, deflection, bond and end anchorage",
-                "RCC",
-                "NS & IS codes",
+                "Essential requirements of instruments: deflection, controlling and damping systems",
+                "Types and working principles of PMMC instruments, voltmeters, ammeters, ohmmeters, clamp-meters",
+                "Working principles of multi-meters, wattmeters, energy meters, time of day meters",
+                "Power factor meters, frequency meters, phase meters, instrument transformers, megger, tachometer",
             ]
         },
-        "RCC Structures-2": {
+        "System modeling": {
             "topics": [
-                "Design of columns and isolated/combined footings",
-                "Pre-stressed concrete",
-                "NS & IS codes",
+                "Control systems: definition and classification",
+                "Open loop and closed loop systems",
+                "Modeling mechanical systems and electrical circuits",
+                "Transfer functions, modeling of liquid level systems and thermal systems",
+                "Modeling of sensors, encoders, generators, and electromechanical systems",
             ]
         },
-        "Steel Structures": {
+        "Block diagram representation": {
             "topics": [
-                "Standard and built-up sections",
-                "Design of bolted and welded connections",
-                "Design of simple elements such as ties, struts, axially loaded columns, and column bases",
-                "NS and IS codes",
+                "Rules for block diagram reduction and examples",
+                "Definitions of signal flow graph and rules for construction",
+                "Conversion between block diagram and signal flow graph",
+                "Response of first order and second order systems to test signals",
             ]
         },
-        "Timber and Masonry Structures": {
+        "Stability analysis": {
             "topics": [
-                "Design principles of timber beams and columns",
-                "Design of masonry structures",
-                "Mandatory rules of thumb",
-                "Nepal Building Code (NBC)",
-                "Properties of masonry structures",
-                "Failure modes of masonry structure",
-                "Mud mortar, lime mortar and cement mortar and its properties",
+                "Definitions of stability and stable systems",
+                "Routh-Hurwitz criterion, root locus plot introduction and construction rules",
+                "Frequency response analysis: Bode plots and stability criteria",
+                "Polar plots, Nyquist’s stability criterion, stability margins",
             ]
         },
     },
-    "Water Supply, Sanitation and Environment (ACiE06)": {
-        "Water Sources, Water Quality and Water Demand": {
+    "Electrical Machines (AEEE06)": {
+        "Transformers fundamentals": {
             "topics": [
-                "Sources of water (surface and groundwater) and their selection",
-                "Impurities in water (suspended, colloidal, dissolved)",
-                "Hardness and alkalinity",
-                "Living organisms in water",
-                "Water-related diseases and prevention measures",
-                "Drinking water quality standards",
-                "Water demand estimation",
+                "Importance and applications of transformers",
+                "Types and construction of transformers",
+                "Theory and operation of single-phase transformers, EMF equation",
+                "Voltage regulation, losses and efficiency, equivalent circuit parameters",
+                "Transformer tests and three-phase transformers",
             ]
         },
-        "Intake and Distribution Systems": {
+        "DC generators": {
             "topics": [
-                "Types of intakes",
-                "Factors affecting the selection of intake location",
-                "Types and purposes of pipe materials, joints, valves, and fittings",
-                "Break pressure tanks",
-                "Service reservoirs and capacity determination",
-                "Design of branch and looped water distribution systems",
+                "Generator principles and construction",
+                "Types of generators and winding",
+                "Losses and efficiency, no-load and load characteristics",
+                "Armature reaction and commutation",
+                "Parallel operation of generators and induced voltage equations",
             ]
         },
-        "Water Treatment Process and Technologies": {
+        "DC motors": {
             "topics": [
-                "Various treatment processes and their purposes",
-                "Screening",
-                "Plain sedimentation",
-                "Sedimentation with coagulation",
-                "Flocculation",
-                "Filtration",
-                "Disinfection",
-                "Softening",
-                "Miscellaneous treatments (aeration, removal of iron and manganese, removal of color, odor, taste)",
+                "Motor principles and types",
+                "Construction and output characteristics of different motors",
+                "Speed control, starting and applications",
+                "Losses and efficiency; introduction to brushless DC motors",
+                "Testing of DC machines, reversing and braking",
             ]
         },
-        "Design and Construction of Sewers": {
+        "Induction motors": {
             "topics": [
-                "Estimation of wastewater quantity",
-                "Sewerage system and types",
-                "Design criteria of sewers",
-                "Shapes of sewers",
-                "Sewer materials",
-                "Design of sewers for separate and combined systems",
-                "Construction of sewers and sewer appurtenances",
+                "Principle of operation of induction motors",
+                "Squirrel cage and wound rotor construction",
+                "Equivalent circuit, synchronous speed, and slip",
+                "Torque-speed characteristics and losses",
+                "Single-phase induction motors: torque-speed characteristics and applications",
             ]
         },
-        "Treatment and Disposal of Wastewater": {
+        "Synchronous generators": {
             "topics": [
-                "Characteristics and examination of sewage",
-                "Decomposition of wastewater",
-                "BOD and COD",
-                "Primary treatment processes and design of grit chamber",
-                "Secondary or biological treatment process",
-                "Sewage filtration",
-                "Activated sludge process",
-                "Oxidation ponds",
-                "Wastewater disposal by dilution (oxygen sag curve, Streeter Phelp’s equation)",
-                "Wastewater disposal by land treatment",
-                "Sludge and solid waste disposal methods",
-                "Latrine and septic tank",
+                "Introduction and construction of synchronous generators",
+                "Winding diagram and power/torque relations",
+                "Speed and frequency, EMF equation",
+                "Voltage regulation and equivalent circuit",
+                "Generator synchronization and permanent magnet synchronous generator applications",
             ]
         },
-        "Concept of Environmental Assessment": {
+        "Synchronous motors": {
             "topics": [
-                "BES, IEE, EIA",
-                "Government’s act, rules, regulations, and procedures for BES/IEE/EIA",
-                "Types of disaster and its mitigation",
+                "Principle of operation of synchronous motors",
+                "Torque-angle characteristics and method of starting",
+                "Counter voltage (CEMF) and armature reaction voltage",
+                "Excitation methods and power factor improvement",
+                "Speed control",
             ]
         },
     },
-    "Irrigation and Drainage (ACiE07)": {
-        "Water Demand Estimation": {
+    "Signals, Systems and Frequency Domain Analysis (AEEE07)": {
+        "Fundamentals of signal and systems": {
             "topics": [
-                "Crop water and irrigation water requirements",
-                "Water availability for irrigation",
-                "Command areas",
-                "Irrigation intensity",
-                "Duty, delta, and their relationship",
-                "Water losses and irrigation efficiencies",
-                "Effective rainfall",
-                "Soil-moisture-irrigation relationship",
-                "Depth and frequency of irrigation",
-                "Design discharge for canals",
+                "Signal classification: continuous time and discrete time signals",
+                "Periodic and aperiodic signals, energy and power signals",
+                "Even and odd signals, orthogonal signals",
+                "Causal, anti-causal and non-causal signals, transformation of signals",
+                "Unit impulse, unit step and unit ramp, convolution integral, convolution sum",
             ]
         },
-        "Design of Canals": {
+        "Laplace transforms": {
             "topics": [
-                "Canal types, network, and alignment",
-                "Tractive force approach of canal design",
-                "Design of stable canals",
-                "Alluvial canals (Kennedy’s and Lacey’s theory)",
-                "Lined canals",
+                "Definition and properties of Laplace transforms",
+                "Laplace transform of common forcing functions and inverse transforms",
+                "Partial fraction expansion and Heaviside’s expansion theorem",
+                "Applications of Laplace transform in solving differential equations",
+                "Transfer function and frequency response",
             ]
         },
-        "Diversion Headworks": {
+        "Fourier series and transforms": {
             "topics": [
-                "Components of headwork",
-                "Seepage theories and their applications (Bligh’s, Lane’s, Khosla’s)",
-                "Design of silt control structures (excluder, ejector, and settling basins)",
-                "Design of weir/barrage (crest, length, and thickness of impervious floor)",
-                "Design of energy dissipaters",
+                "CT Fourier series and Fourier integral representation",
+                "Forward and inverse Fourier transforms and properties",
+                "Parseval's theorem, discrete time Fourier series representation",
+                "Properties of discrete time Fourier transform (DTFT)",
+                "Forward and inverse DTFT representation",
             ]
         },
-        "River Training Works": {
+        "Z transform and digital systems": {
             "topics": [
-                "River stages and need of river training",
-                "Design of river training works (guide bund and launching aprons, levees, and spurs)",
-                "Watershed management",
+                "Sampling and the sampling theorem, aliasing",
+                "Conversion to discrete time signals and reconstruction",
+                "Definition and properties of the z-transform",
+                "Inverse z-transform and system response",
+                "Transfer function H(z) and stability tests of discrete time systems",
             ]
         },
-        "Regulating and Cross-Drainage Structures": {
+        "Application of frequency domain analysis": {
             "topics": [
-                "Functions of various types of regulators",
-                "Design of regulators and escapes (crest, length, and thickness of impervious floor)",
-                "Design of pipe outlet (free and submerged)",
-                "Design of vertical drop (crest, length, and thickness of impervious floor)",
-                "Design of cross-drainage structures",
+                "Stability analysis and spectral analysis",
+                "Spectrum sensing and correlation",
+                "System design",
             ]
         },
-        "Water Logging and Drainage": {
+        "Filters": {
             "topics": [
-                "Causes, effects, and preventive measures",
-                "Design of surface and sub-surface drainage systems",
+                "Filters and applications: ideal and digital filters",
+                "Active and passive filters, frequency responses",
+                "Butterworth and Chebyshev filters",
+                "Introduction to digital filters and basic types of filtering",
+                "Transfer function and frequency response of FIR and IIR filters",
             ]
         },
     },
-    "Hydropower (ACiE08)": {
-        "Planning of Hydropower Projects": {
+    "Communication Systems (AEEE08)": {
+        "Basic elements of communication systems": {
             "topics": [
-                "Power potential (gross, technical, economic) of Nepal and the world",
-                "Stages of hydropower development",
-                "Hydropower development in Nepal (history, policy, acts & regulation)",
+                "Block diagram of analog and digital communication systems",
+                "Analog vs Digital Communication systems",
+                "Baseband and band pass systems",
+                "Signal and noise in communication systems",
+                "Statistical description of noise and types of noise",
             ]
         },
-        "Power and Energy Potential Study": {
+        "Analog modulation and demodulation": {
             "topics": [
-                "Power and energy potentials",
-                "Methods of fixing installed capacity of a plant",
-                "Types of hydropower plants on various bases",
-                "Components of different types of hydropower projects",
-                "Reservoirs and their regulation",
+                "Amplitude Modulation (AM) and DSB-SC modulation",
+                "Demodulators: square law and synchronous demodulation",
+                "Carrier recovery techniques",
+                "SSB-SC modulation and demodulation",
+                "Frequency Modulation (FM) and Phase Modulation (PM)",
             ]
         },
-        "Headworks of Storage Plants": {
+        "Digital communication and modulation": {
             "topics": [
-                "Components of a typical storage plant",
-                "Dams (types, functions, selection, design, failure modes and remedies)",
-                "Stability analysis of gravity dam",
-                "Seepage control and foundation treatment in dams",
-                "Design of intake, spillway, and energy dissipaters",
-                "Gates (types and locations)",
+                "Types of Digital Modulation Techniques: BASK, BFSK, BPSK",
+                "M-ary Techniques and QPSK",
+                "Quadrature Amplitude Modulation (QAM)",
+                "Error probability in PSK systems",
+                "Shannon Hartley Channel Capacity theorem and multiplexing",
             ]
         },
-        "Headworks of Run-of-River (ROR) Plants": {
+        "Pulse modulation and coding": {
             "topics": [
-                "Components of a typical ROR plant",
-                "Design of intake",
-                "Methods of bed and suspended load handling",
-                "Design of settling basin (practice and concentration approach)",
-                "Estimation of sediment volume in settling basin",
-                "Flushing of deposited sediment",
-                "Estimation of flushing frequency for sediments",
+                "Pulse Amplitude Modulation (PAM) and bandwidth requirement",
+                "Pulse Code Modulation (PCM): encoders, decoders, quantization",
+                "Quantization error and Companders",
+                "Differential PCM and Delta Modulation (DM)",
+                "Adaptive DM and continuously variable DM",
             ]
         },
-        "Water Conveyance Structures": {
+        "Error control coding techniques": {
             "topics": [
-                "Hydraulic tunnels, cross-sections, and hydraulic design (velocity and sizing)",
-                "Tunnel lining",
-                "Design of forebay and surge tanks",
-                "Design of penstocks and pressure shaft",
-                "Hydraulic transients (water hammer)",
+                "Introduction to channel coding and Hamming distance",
+                "Parity and parity coding, block codes",
+                "Linear block code and systematic linear block coding",
+                "Cyclic code and introduction to convolution coding",
+                "Code trees, trellis, state diagram, and decoding methods",
             ]
         },
-        "Hydro-electric Machines and Powerhouse": {
+        "Data communication": {
             "topics": [
-                "Hydro-mechanical equipment and their functions",
-                "Types of turbines and performance characteristics",
-                "Selection of turbine and their specific speed",
-                "Preliminary design of Francis and Pelton turbines",
-                "Scroll case and draft tubes",
-                "Generators (types, rating)",
-                "Governors",
-                "Pumps and their performance characteristics",
-                "Powerhouse (types, general arrangements, dimensions)",
+                "Overview of data communication networks",
+                "Parallel and serial communication",
+                "Bandwidth utilization and multiplexing",
+                "Frequency Division Multiplexing (FDM) and Time Division Multiplexing (TDM)",
+                "TCP/IP and OSI Model with layered architecture",
             ]
         },
     },
-    "Transportation (ACiE09)": {
-        "Highway Planning and Survey": {
+    "Power Systems and Devices (AEEE09)": {
+        "Power plant": {
             "topics": [
-                "Modes of transport",
-                "History of road development in Nepal",
-                "Classification of roads",
-                "Road survey",
-                "Highway alignment and controlling factors",
-                "Evaluating alternate alignments",
-                "Road Standards of Nepal",
+                "Electrical Power System: Basic structure of power system",
+                "Generation of Electrical Power: Thermal, Hydro, Nuclear",
+                "Solar Photovoltaic System, Wind Energy Conversion Systems",
+                "Tidal power plant, Geothermal power plants, Fuel Cells",
+                "Energy Storage Systems",
             ]
         },
-        "Geometric Design of Highway": {
+        "Transmission and distribution of electrical power": {
             "topics": [
-                "Basic design control and criteria",
-                "Elements of highway cross-section",
-                "Highway curves",
-                "Super elevation",
-                "Average and ruling gradients",
-                "Stopping sight distance",
-                "Design considerations for horizontal and vertical alignments",
-                "Extra widening and set back distance",
-                "Design of road drainage structures",
-                "Design considerations for hill roads",
+                "Electric supply system and various systems of power transmission",
+                "Economic choice of conductor size and transmission voltage",
+                "Mechanical design of overhead lines: conductor materials, line supports",
+                "Insulators, corona, right of way, distribution systems",
+                "Classification of distribution systems and load curves",
             ]
         },
-        "Highway Materials": {
+        "Protection and control of electrical power system": {
             "topics": [
-                "Types of aggregates and tests on their gradation, strength, durability",
-                "Binding materials and their tests",
-                "Design of asphalt mixes",
-                "Evaluation of subgrade soil",
+                "Principles of power system protection",
+                "Fuse operation, Miniature Circuit Breaker and its operation",
+                "Power circuit breaker operation and types",
+                "Relays and their types, protection schemes for generators and transformers",
+                "Supervisory Control and Data Acquisition System (SCADA), Smart Grid",
             ]
         },
-        "Traffic Engineering and Safety": {
+        "Residential and industrial electrification": {
             "topics": [
-                "Impact of human and vehicular characteristics on traffic planning",
-                "Traffic operations and regulations",
-                "Traffic control devices",
-                "Traffic studies (volume, speed, O&D, traffic capacity, traffic flow characteristics, parking, accident, flow)",
-                "Road intersections (types, configurations, design)",
-                "Traffic lights",
-                "Factors influencing night visibility",
-                "Road safety measures",
+                "Service mains and types of distribution systems in buildings",
+                "Types of electrical wiring and electrical layout drawing",
+                "Load estimation and distribution board plan for a residential building",
+                "Types of industrial load and power supply requirements",
+                "Electrical energy conservation in buildings and industries",
             ]
         },
-        "Road Pavement": {
+        "Power electronics": {
             "topics": [
-                "Different types of pavement",
-                "Design methods for flexible and rigid pavements (DOR Guidelines)",
-                "Loads and other factors controlling pavement design",
-                "Stress due to load and temperature",
+                "Thyristor, Silicon Controller Rectifier, Diac, Triac",
+                "Uninterrupted Power Supply (UPS), Switched Mode Power Supply",
+                "DC-DC converter and inverter",
             ]
         },
-        "Road Construction & Maintenance": {
-            "topics": [
-                "Activities, techniques, tools, equipment and plants used in road construction",
-                "Preparation of road subgrade",
-                "Field compaction control and soil stabilization",
-                "Construction of asphalt concrete layers",
-                "Construction procedure for penetration macadam, bituminous bound macadam, and plain cement concrete pavements",
-                "Road maintenance, repair and rehabilitation",
-            ]
+        "Power system analysis": {
+            "topics": ["Fault Analysis, Load flow analysis, Power system stability"]
         },
     },
     "Project Planning, Design and Implementation (AALL10)": {
-        "Engineering Drawings and its Concepts": {
+        "Engineering drawings and its concepts": {
             "topics": [
                 "Fundamentals of standard drawing sheets",
-                "Dimensions",
-                "Scale",
-                "Line diagram",
-                "Orthographic projection",
-                "Isometric projection/view",
-                "Pictorial views",
-                "Sectional drawing",
+                "Dimensions, scale, and line diagram",
+                "Orthographic projection, isometric projection/view",
+                "Pictorial views and sectional drawing",
             ]
         },
         "Engineering Economics": {
             "topics": [
-                "Understanding of project cash flow",
-                "Discount rate",
-                "Interest and time value of money",
-                "Basic methodologies for engineering economics analysis (Discounted Payback Period, NPV, IRR & MARR)",
+                "Understanding project cash flow",
+                "Discount rate, interest, and time value of money",
+                "Methodologies for engineering economics analysis (Discounted Payback Period, NPV, IRR & MARR)",
                 "Comparison of alternatives",
-                "Depreciation system and taxation system in Nepal",
+                "Depreciation and taxation system in Nepal",
             ]
         },
-        "Project Planning and Scheduling": {
+        "Project planning and scheduling": {
             "topics": [
-                "Project classifications",
-                "Project life cycle phases",
+                "Project classifications and life cycle phases",
                 "Project planning process",
                 "Project scheduling (bar chart, CPM, PERT)",
                 "Resources levelling and smoothing",
-                "Monitoring/evaluation/controlling",
+                "Monitoring, evaluation, and controlling",
             ]
         },
-        "Project Management": {
+        "Project management": {
             "topics": [
                 "Information system",
                 "Project risk analysis and management",
-                "Project financing",
-                "Tender and its process",
+                "Project financing and tender process",
                 "Contract management",
             ]
         },
-        "Engineering Professional Practice": {
+        "Engineering professional practice": {
             "topics": [
                 "Environment and society",
-                "Professional ethics",
-                "Regulatory environment",
+                "Professional ethics and regulatory environment",
                 "Contemporary issues/problems in engineering",
                 "Occupational health and safety",
                 "Roles/responsibilities of Nepal Engineers Association (NEA)",
@@ -793,7 +713,7 @@ create_db()
 
 
 def course_dashboard():
-    st.title("NEC Study Dashboard: CIVIL ENGINEERING")
+    st.title("NEC Study Dashboard: ELECTRICAL AND ELECTRONICS ENGINEERING")
 
     selected_unit = st.sidebar.selectbox(
         "Choose a Unit", ["Select a Unit"] + list(course_structure.keys())
