@@ -857,7 +857,7 @@ Please ensure that your explanations are informative and well-structured, allowi
         # model=model_name or "Llama-3.1-8b-Instant",
         temperature=temperature,
         top_p=1,
-        max_tokens=8192,
+        max_tokens=7500,
         stream=True,
     )
 
