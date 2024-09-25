@@ -706,7 +706,7 @@ create_db()
 
 
 def course_dashboard():
-    st.title("NEC Study Dashboard: COMPUTER ENGINEERING")
+    st.title("NEC Study Dashboard: Electrical ENGINEERING")
 
     selected_unit = st.sidebar.selectbox(
         "Choose a Unit", ["Select a Unit"] + list(course_structure.keys())
