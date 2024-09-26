@@ -991,21 +991,28 @@ def course_dashboard():
                         )
                         store_content(selected_unit, selected_topic, explanation)
                         st.sidebar.write("New content generated")
+                        set_scroll_position()
+
                 else:
                     st.sidebar.write("Using cached content")
+                    set_scroll_position()
 
                 st.write(explanation, unsafe_allow_html=True)
+                set_scroll_position()
 
-                st.write("### MCQs")
+                # st.write("### MCQs")
                 assessment_expander_key = f"{selected_unit}_assessment_expander"
-                st.session_state.setdefault(assessment_expander_key, False)
+                st.session_state.setdefault(assessment_expander_key, True)
+                set_scroll_position()
 
-                if st.button(f"Get MCQs", key="take_assessment"):
-                    st.session_state[assessment_expander_key] = True
+                # if st.button(f"Get MCQs", key="take_assessment"):
+                #     st.session_state[assessment_expander_key] = True
 
                 if st.session_state[assessment_expander_key]:
-                    with st.spinner("Generating assessment..."):
-                        assessment_dashboard(selected_unit, selected_topic)
+                    set_scroll_position()
+
+                    assessment_dashboard(selected_unit, selected_topic)
+                    set_scroll_position()
 
 
 def generate_practice_problems_with_retries(explanation, selected_topic):
@@ -1126,13 +1133,15 @@ def generate_feedback(question, student_answer, actual_answer):
 
 
 def assessment_dashboard(selected_topic, selected_lesson):
-    st.header(f"Assessment: {selected_lesson}")
+    st.header(f"MCQs: {selected_lesson}")
 
     # Retrieve assessment from database
     assessment_json = retrieve_assessment(selected_topic, f"{selected_lesson}")
 
     if assessment_json is None:
-        with st.spinner("Generating assessment..."):
+        with st.spinner("Generating MCQs..."):
+            set_scroll_position()
+
             assessment_json = generate_assessment_with_retries(
                 selected_topic, selected_lesson
             )
@@ -1141,7 +1150,10 @@ def assessment_dashboard(selected_topic, selected_lesson):
                 f"{selected_lesson}",
                 json.dumps(assessment_json),
             )
-            st.rerun()
+            set_scroll_position()
+
+            # st.rerun()
+            set_scroll_position()
 
     if isinstance(assessment_json, dict):
         assessment = assessment_json
@@ -1157,6 +1169,7 @@ def assessment_dashboard(selected_topic, selected_lesson):
         st.session_state["start_time"] = datetime.datetime.now()
 
     for i, question in enumerate(questions):
+        total_ques = i + 1
         question_key = f"question_{i}_start_time"
         if question_key not in st.session_state:
             st.session_state[question_key] = datetime.datetime.now()
@@ -1192,8 +1205,9 @@ def assessment_dashboard(selected_topic, selected_lesson):
             score,
         )
 
-        if score >= 1:
-            st.success(f"**You scored {score}/15**", icon="🔥")
+        pass_threshold = 2
+        if score >= pass_threshold:
+            st.success(f"**You scored {score}/{total_ques}**", icon="🔥")
             # mycode = "<script>alert('Check your feedback😀 Then, You may move to next lesson. Good Luck! ')</script>"
             # components.html(mycode, height=0, width=0)
             st.info("Check Feedback below for wrong Answers, if any.")
@@ -1220,8 +1234,8 @@ def assessment_dashboard(selected_topic, selected_lesson):
                 st.divider()
 
         else:
-            st.warning(f"You scored {score}/15. REVISE AGAIN!!!", icon="👀")
-            st.write(f"You need to score at least 7 to check feedback.")  # Modify above
+            st.warning(f"You scored {score}/{total_ques}. REVISE AGAIN!!!", icon="👀")
+            st.write(f"You need to score at least {pass_threshold} to check feedback.")
             st.write(f"Please revise the provided resources and Try again...")
 
     # option to generate a new quiz
@@ -1238,17 +1252,27 @@ def assessment_dashboard(selected_topic, selected_lesson):
             st.rerun()
 
 
+def set_scroll_position():
+    # JavaScript snippet to maintain scroll position at the top
+    st.markdown(
+        """
+        <script>
+        window.onload = function() {
+            window.scrollTo(0, 0);  // Scroll to top
+        }
+        </script>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
 def stream_response(query):
     client = Groq()
 
+    # Use shared history + the new user query
     stream = client.chat.completions.create(
-        messages=[
-            {
-                "role": "system",
-                "content": "You are a helpful tutor for computer engineering student from Nepal. Skip Introductions and give brief and correct answer or solution to the query of student to help them have clear concepts on their asked question.",
-            },
-            {"role": "user", "content": query},
-        ],
+        messages=st.session_state.shared_messages
+        + [{"role": "user", "content": query}],
         # model="llama3-8b-8192",
         model="llama-3.1-70b-versatile",
         temperature=0.7,
@@ -1264,59 +1288,103 @@ def stream_response(query):
         if delta_content:  # Check if not None
             response_text += delta_content
             yield response_text
+    set_scroll_position()
 
 
 def main():
-    # st.sidebar.title("NEC Learning App")
+    st.sidebar.title("NEC Learning App")
 
     # Ensure database and tables are created
     create_db()
     course_dashboard()
+    # Initialize shared message history if not present
+    if "shared_messages" not in st.session_state:
+        st.session_state.shared_messages = []
 
+    # Function to limit history to last 3 full conversations
+    def trim_conversation():
+        messages = st.session_state.shared_messages
+        conversation_pairs = [(i, i + 1) for i in range(0, len(messages) - 1, 2)]
+        if len(conversation_pairs) > 3:
+            st.session_state.shared_messages = messages[
+                -6:
+            ]  # Last 3 pairs (6 messages)
+
+    # Prevent page from scrolling to bottom automatically
+    set_scroll_position()
+
+    # Sidebar Chat Interface
     with st.sidebar:
         st.sidebar.title("NEC Learning App")
         query_sidebar = st.chat_input("Ask your query", key="sidebar_chat_input")
 
         if query_sidebar:
-            st.session_state.messages_sidebar = [
+            # Add user's query to shared history
+            st.session_state.shared_messages.append(
                 {"role": "user", "content": query_sidebar}
-            ]
+            )
 
+            # Display the user query in sidebar
             with st.chat_message("user"):
                 st.code(query_sidebar)
 
+            # Assistant responds to the query
             with st.chat_message("assistant"):
                 message_placeholder = st.empty()
                 response_text = ""
 
+                # Stream the assistant response
                 for ast_mess in stream_response(query_sidebar):
                     response_text = ast_mess
                     message_placeholder.markdown(response_text)
 
-                st.session_state.messages_sidebar.append(
+                # Add assistant's response to shared history
+                st.session_state.shared_messages.append(
                     {"role": "assistant", "content": response_text}
                 )
 
+            trim_conversation()
+    # # Scroll to Top Text Link
+    # st.markdown(
+    #     """
+    #     <div style="position: fixed; bottom: 20px; right: 20px; z-index: 999;">
+    #         <button onclick="window.scrollTo({top: 0, behavior: 'smooth'});" style="padding: 10px 15px; border-radius: 5px; background-color: #007BFF; color: white; border: none; cursor: pointer;">
+    #             Scroll to Top
+    #         </button>
+    #     </div>
+    #     """,
+    #     unsafe_allow_html=True,
+    # )
+
+    # Main Chat Interface
     query = st.chat_input("Ask your query", key="main_chat_query")
 
     if query:
-        st.session_state.messages = [{"role": "user", "content": query}]
+        # Add user's query to shared history
+        st.session_state.shared_messages.append({"role": "user", "content": query})
 
+        # Display the user query in main chat
         with st.chat_message("user"):
             st.code(query)
 
+        # Assistant responds to the query
         with st.chat_message("assistant"):
             message_placeholder = st.empty()
             response_text = ""
 
+            # Stream the assistant response
             for ast_mess in stream_response(query):
                 response_text = ast_mess
                 message_placeholder.markdown(response_text)
 
-            st.session_state.messages.append(
+            # Add assistant's response to shared history
+            st.session_state.shared_messages.append(
                 {"role": "assistant", "content": response_text}
             )
 
+        trim_conversation()
+    
 
 if __name__ == "__main__":
     main()
+    set_scroll_position()
