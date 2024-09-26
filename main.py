@@ -839,7 +839,7 @@ def retrieve_assessment(topic, level):
         return None
 
 
-def generate_dynamic_content_groq(query, model_name=None, temperature=0.5):
+def generate_dynamic_content_groq(query, model_name=None, temperature=0.7):
     client = Groq()
     stream = client.chat.completions.create(
         messages=[
@@ -847,7 +847,7 @@ def generate_dynamic_content_groq(query, model_name=None, temperature=0.5):
                 "role": "system",
                 "content": """As an engineering tutor, your task is to provide detailed explanations of requested engineering topics. Your goal is to cover all crucial aspects of the topic, incorporating relevant examples to enhance understanding. Aim to address important points that might be asked in multiple-choice questions for knowledge assessment. Remember that you are tutoring an engineering background student, so go in detail and don't miss anything. Also, you may utilize latex capabilities to express equations when needed.
 
-Your responses should be clear and detailed, offering thorough explanations that enhance the reader's understanding of the topic. Additionally, be prepared to provide JSON responses when explicitly requested by the user, ensuring that any single backward slashes in the JSON are replaced with two backslashes to ensure correct display when extracted and rendered in the UI using streamlit. Otherwise, when responding besides JSON, respond as it is.
+Your responses should be clear and detailed, offering thorough explanations that enhance the reader's understanding of the topic. Additionally, be prepared to provide JSON responses when explicitly requested by the user, ensuring that any single backward slashes in the JSON are replaced with two backslashes to ensure correct display when extracted and rendered in the UI using streamlit. Otherwise, when responding besides JSON, respond as it is. Reminder: Don't provided JSON format response unless requested by user.
 
 Please ensure that your explanations are informative and well-structured, allowing for a comprehensive grasp of the engineering topics.""",
             },
@@ -870,12 +870,12 @@ Please ensure that your explanations are informative and well-structured, allowi
     return response_text
 
 
-def generate_dynamic_content_github(query, model_name=None, temperature=0.5):
+def generate_dynamic_content_github(query, model_name=None, temperature=0.7):
     pass
 
 
 def generate_dynamic_content(
-    query, model_type="groq", model_name=None, temperature=0.7
+    query, model_type="groq", model_name=None, temperature=0.8
 ):
     if model_type == "groq":
         return generate_dynamic_content_groq(query, model_name, temperature)
@@ -927,6 +927,38 @@ create_db()
 
 def course_dashboard():
     st.title("NEC Study Dashboard: COMPUTER ENGINEERING")
+
+    st.markdown(
+        """
+        <style>
+        /* Add borders to the selectbox container */
+        .st-emotion-cache-sy3zga div[role="combobox"] {
+            border: 2px solid #ddd !important;  /* Add a visible border */
+            padding: 5px !important;  /* Add padding inside the box */
+            border-radius: 5px;  /* Round the edges slightly */
+        }
+
+        /* Add borders and improve visibility for each option */
+        .st-emotion-cache-sy3zga div[role="combobox"] > div {
+            border-bottom: 1px solid #ccc !important;  /* Border between options */
+            padding: 5px !important;  /* Ensure there's space inside each option */
+        }
+
+        /* Prevent selected option from overlapping */
+        .st-emotion-cache-sy3zga div[role="combobox"] > div {
+            white-space: pre-wrap !important;  /* Wrap long text */
+            overflow-wrap: break-word !important;  /* Break long words */
+            height: auto !important;  /* Adjust height dynamically */
+        }
+
+        /* Ensure long text doesn’t overlap other options */
+        .st-emotion-cache-sy3zga {
+            overflow: visible !important;  /* Prevent clipping */
+        }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
 
     selected_unit = st.sidebar.selectbox(
         "Choose a Unit", ["Select a Unit"] + list(course_structure.keys())
@@ -998,21 +1030,22 @@ def generate_assessment_with_retries(selected_topic, selected_lesson):
             #     f"Attempting generation with {model_type} model '{model_name}' at temperature {temperature}"
             # )
             assessment_response = generate_dynamic_content(
-                f"""Based on the following lesson content from Engineering study materials, generate exactly 15 multiple-choice questions (MCQs) along with their respective answers for the topic {selected_topic} from lesson {selected_lesson}. Make sure that only one option is correct while other options are wrong but seems quite similar to the actual option. This is to prepare engineering completed students for top level MCQ assessments to be taken by Engineering council. Each question from MCQ carries either 1 or 2 marks. For 2 marks question, there may be numerical type MCQ or coding related MCQ only if the lesson topic is related to such. Strictly use the given JSON Format below as your response format.
+                f"""Based on the following lesson content from Engineering study materials, generate exactly 15 multiple-choice questions (MCQs) along with their respective answers for the topic {selected_topic} from lesson {selected_lesson}. Make sure that only one option is correct while other options are wrong but seems quite similar to the actual option. This is to prepare engineering completed students for top level MCQ assessments to be taken by Engineering council. Each question from MCQ carries either 1 or 2 marks. For 2 marks question, there may be numerical type MCQ or coding related MCQ only if the lesson topic is related to such. Provide me a json response. Strictly use the given JSON Format as your response format.
                 
                 # Lesson Content: {retrieve_content(selected_topic, selected_lesson)}
                 
+                ## Reminder: Strictly use the given JSON Format below as your response format. Use double backslashes instead of one backslash for if needed to use streamlit expressions inside your JSON response.
                 # JSON Format:
                 {{
                     "questions": [
                         {{
-                            "question": "Question 1",
+                            "question": "Question 1 [mark]",
                             "options": ["Option 1", "Option 2", "Option 3", "Option 4"],
                             "correct_answer": "Correct option for  Question 1"
 
                         }},
                         {{
-                            "question": "Question 2",
+                            "question": "Question 2 [mark]",
                             "options": ["Option 1", "Option 2", "Option 3", "Option 4"],
                             "correct_answer": "Correct option for Question 2"
                         }},
@@ -1085,7 +1118,7 @@ def generate_feedback(question, student_answer, actual_answer):
     try:
         # print(f"Generating feedback using Groq models.")
         return generate_dynamic_content_groq(
-            query=prompt, model_name="Llama-3.1-8b-Instant", temperature=0.5
+            query=prompt, model_name="llama-3.1-70b-versatile", temperature=0.7
         )
     except Exception as e_groq:
         # print(f"Error using Groq model: {e_groq}")
